@@ -1,0 +1,14 @@
+Package: MSML
+Title: Model selection based on Machine Learning (ML)
+Version: 1.0.0.0
+Authors@R: c(person("Hong", "Lee", role = c("aut","cph"),email = "Hong.Lee@unisa.edu.au"),
+             person("Moksedul", "Momin", role = c("aut", "cre","cph"), email = "cvasu.momin@gmail.com"))
+Description: Model selection based on Machine Learning (ML) following modified Recursive feature elimination (RFE).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Depends: 
+    R (>= 2.10)
+LazyData: true
