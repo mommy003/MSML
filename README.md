@@ -1,5 +1,5 @@
 # MSML
-The MSML package can indentify best performing model using all the available features. In the evaluation using the validation datasets, we employed a modified version of recursive feature elimination (RFE) algorithm, a widely adopted feature selection technique in the context of machine learning and data analysis. 
+The MSML package can indentify best performing model using all the available features. This package requires ree sets of data (e.g. training, validation and test dataset) having equal no of columns. In the evaluation process, we employed a modified version of recursive feature elimination (RFE) algorithm to identify best model, a widely adopted feature selection technique in the context of machine learning and data analysis. 
 
 # INSTALLATION
 To use MSML:
