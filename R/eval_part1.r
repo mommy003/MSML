@@ -1,3 +1,28 @@
+#' model_combination function
+#' This function will generate PRS based on all possible combianations of model. 
+#' The total number of models required to explore the combinations of these 'n' 
+#' features can be calculated by summing the combinations for each possible 
+#' number of features, ranging from 1 to 'n' (?[C(n,i)]).
+#' where C(n,k)  represents the binomial coefficient or "n choose k," 
+#' with n denoting the total number of features and k indicating 
+#' the number of features to include in each model.
+#' @param data_train This is the matrix for training dataset
+#' @param data_valid This is the matrix for validation dataset
+#' @param data_test This is the matrix for test dataset
+#' @param mv The total number of columns in data_train/data_valid/data_test
+#' @keywords All possible model combinations
+#' @export
+#' @importFrom stats D qnorm
+#' @return This function will generate all possible model outcomes for validation and test dataset
+#' \item{}{}
+#' @examples
+#' data_train <- data_train
+#' data_train  <- data_train
+#' data_test  <- data_test
+#' mv=8
+#' model_combination(data_train,data_valid,data_test,mv)
+
+
 model_combination = function (data_train,data_valid,data_test,mv) {
 
 
@@ -16,7 +41,7 @@ for (i in 1:(mv-1)) {
   }
 }
 
-sink("models.all_127_validation")
+sink("models_validation_all")
 write.table(dat,quote=F,col.name=F,row.name=F)
 sink()
 
@@ -37,7 +62,7 @@ for (i in 1:(mv-1)) {
   }
 }
 
-sink("models.all_127_test")
+sink("models_test_all")
 write.table(dat,quote=F,col.name=F,row.name=F)
 sink()
 
