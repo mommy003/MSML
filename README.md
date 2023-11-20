@@ -7,7 +7,7 @@ To use MSML:
 install.packages("devtools")
 library(devtools)
 devtools::install_github("mommy003/MSML")
-library(MSML)
+library(MSML) 
 ```
 # DATA PREPARATION
 Users are required to provide three sets of data—namely, training, validation, and test datasets—with an equal number of columns. Below are examples for clarification:
