@@ -28,8 +28,8 @@ Users are required to provide three sets of data—namely, training, validation,
 
 
 # DATA ANALYSIS
-## Model Combination
-To get all the model combinations 
+## Model Combinations
+To get all the possible model combinations 
 ```
 data_train <- data_train
 data_valid  <- data_valid
@@ -39,7 +39,7 @@ model_combination(data_train,data_valid,data_test,mv)
 ```
 This will generate Polygenic Risk Scores (PRS) based on all possible model combinations for both the validation and test datasets, resulting in variables named models_validation_all and models_test_all.
 
-## Identify Besr Model
+## Identify Best Model
 To identify best model
 ```
 dat <- read.table("models_test_all")
