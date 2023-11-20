@@ -1,5 +1,5 @@
 # MSML
-The MSML package can indentify best performing model using all the available features. This package requires ree sets of data (e.g. training, validation and test dataset) having equal no of columns. In the evaluation process, we employed a modified version of recursive feature elimination (RFE) algorithm to identify best model, a widely adopted feature selection technique in the context of machine learning and data analysis. 
+The MSML package has the capability to identify the best-performing model using all available features. To utilize this package, three sets of data—training, validation, and test datasets—are required, each having an equal number of columns. During the evaluation process, we applied a modified version of the recursive feature elimination (RFE) algorithm. RFE is a widely adopted feature selection technique in the context of machine learning and data analysis.
 
 # INSTALLATION
 To use MSML:
@@ -10,7 +10,7 @@ devtools::install_github("mommy003/MSML")
 library(MSML)
 ```
 # DATA PREPARATION
-User needs to provide three sets of data (e.g. training, validation and test dataset) having equal no of columns.
+Users are required to provide three sets of data—namely, training, validation, and test datasets—with an equal number of columns. Below are examples for clarification:
 - PGS1  
 - PGS2 
 - PGS3  
@@ -30,7 +30,8 @@ data_test  <- data_test
 mv=8
 model_combination(data_train,data_valid,data_test,mv)
 ```
-This will give PRS based on all possible model combination for validation and test datasets (e.g. models_validation_all, models_test_all)
+This will generate Polygenic Risk Scores (PRS) based on all possible model combinations for both the validation and test datasets, resulting in variables named models_validation_all and models_test_all.
+
 ## Identify Besr Model
 To identify best model
 ```
@@ -40,7 +41,7 @@ tn=15
 prev=0.047
 model_evaluation(dat,mv,tn,prev)
 ```
-This will give you three different output file in the working directroy
+This process will produce three distinct output files in the working directory.
 
 # References
 1. Olkin, I. and  Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
