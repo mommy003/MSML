@@ -12,17 +12,17 @@ library(MSML)
 # DATA PREPARATION
 Users are required to provide three sets of data—namely, training, validation, and test datasets—with an equal number of columns. Below are examples for clarification:
 ### Training Dataset
-| Feature_1 | Feature_2 | Feature_3 | ... | Feature_N | Target_Variable |
+| Feature_1 | Feature_2 | Feature_3 | ... | Feature_N |    phenotype    |
 |-----------|-----------|-----------|-----|-----------|-----------------|
 |    ...    |    ...    |    ...    | ... |    ...    |       ...       |
 
 ### Validation Dataset
-| Feature_1 | Feature_2 | Feature_3 | ... | Feature_N | Target_Variable |
+| Feature_1 | Feature_2 | Feature_3 | ... | Feature_N |    phenotype    |
 |-----------|-----------|-----------|-----|-----------|-----------------|
 |    ...    |    ...    |    ...    | ... |    ...    |       ...       |
 
 ### Test Dataset
-| Feature_1 | Feature_2 | Feature_3 | ... | Feature_N | Target_Variable |
+| Feature_1 | Feature_2 | Feature_3 | ... | Feature_N |    phenotype    |
 |-----------|-----------|-----------|-----|-----------|-----------------|
 |    ...    |    ...    |    ...    | ... |    ...    |       ...       |
 
@@ -37,7 +37,10 @@ data_test  <- data_test
 mv=8
 model_combination(data_train,data_valid,data_test,mv)
 ```
-This will generate Polygenic Risk Scores (PRS) based on all possible model combinations for both the validation and test datasets, resulting in variables named models_validation_all and models_test_all.
+This will generate Polygenic Risk Scores (PRS) based on all possible model combinations for both the validation and test datasets, resulting in variables named models_validation_all and models_test_all. The output file will have following columns
+| phenotype | model_1   | model_2   | ... | Model_N   | 
+|-----------|-----------|-----------|-----|-----------|
+|    ...    |    ...    |    ...    | ... |    ...    |
 
 ## Identify Best Model
 To identify best model
