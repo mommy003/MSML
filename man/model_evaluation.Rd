@@ -23,7 +23,7 @@ This function will generate all possible model outcomes for validation and test 
 This function will identify best model in validation and test dataset.
 }
 \examples{
-data_train <- data_train
+dat <- read.table("models_test_all")
 mv=8
 tn=15
 prev=0.047

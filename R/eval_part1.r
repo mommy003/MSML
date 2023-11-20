@@ -17,7 +17,7 @@
 #' \item{}{}
 #' @examples
 #' data_train <- data_train
-#' data_train  <- data_train
+#' data_valid  <- data_valid
 #' data_test  <- data_test
 #' mv=8
 #' model_combination(data_train,data_valid,data_test,mv)
