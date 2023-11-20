@@ -20,6 +20,28 @@ User needs to provide three sets of data (e.g. training, validation and test dat
 - PGS7  
 - target phenotype (target)
 
+# DATA ANALYSIS
+## Model Combination
+To get all the model combinations 
+```
+data_train <- data_train
+data_valid  <- data_valid
+data_test  <- data_test
+mv=8
+model_combination(data_train,data_valid,data_test,mv)
+```
+This will give PRS based on all possible model combination for validation and test datasets (e.g. models_validation_all, models_test_all)
+## Identify Besr Model
+To identify best model
+```
+dat <- read.table("models_test_all")
+mv=8
+tn=15
+prev=0.047
+model_evaluation(dat,mv,tn,prev)
+```
+This will give you three different output file in the working directroy
+
 # References
 1. Olkin, I. and  Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
 2. DeLong, E.R., D.M. DeLong, and D.L. Clarke-Pearson, Comparing the areas under two or more correlated receiver operating characteristic curves: a nonparametric approach. Biometrics, 1988: p. 837-845.
