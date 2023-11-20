@@ -11,17 +11,17 @@ library(MSML)
 ```
 # DATA PREPARATION
 Users are required to provide three sets of data—namely, training, validation, and test datasets—with an equal number of columns. Below are examples for clarification
-- Training Dataset
+### Training Dataset
 | Feature_1 | Feature_2 | Feature_3 | ... | Feature_N | Target_Variable |
 |-----------|-----------|-----------|-----|-----------|-----------------|
 |    ...    |    ...    |    ...    | ... |    ...    |       ...       |
 
-- Validation Dataset
+### Validation Dataset
 | Feature_1 | Feature_2 | Feature_3 | ... | Feature_N | Target_Variable |
 |-----------|-----------|-----------|-----|-----------|-----------------|
 |    ...    |    ...    |    ...    | ... |    ...    |       ...       |
 
-- Test Dataset
+### Test Dataset
 | Feature_1 | Feature_2 | Feature_3 | ... | Feature_N | Target_Variable |
 |-----------|-----------|-----------|-----|-----------|-----------------|
 |    ...    |    ...    |    ...    | ... |    ...    |       ...       |
