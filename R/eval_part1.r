@@ -66,6 +66,23 @@ sink("predict_test_models")
 write.table(dat,quote=F,col.name=F,row.name=F)
 sink()
 
+
+
+
+sink("total_model_configurations")
+#cat("prediction models **************************\n")
+dat=cbind(data_valid$target);k=0
+for (i in 1:(mv-1)) {  
+  com=combn(seq(1,(mv-1)),i)
+  #print(com)
+  for (j in 1:ncol(com)) {
+    k=k+1
+    cat("model",k,":",com[,j],"\n")
+   }
+}
+sink()
+
+
 }
 
 
