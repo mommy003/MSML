@@ -23,7 +23,7 @@ model_evaluation = function (dat,mv,tn,prev) {
 dat=as.matrix(dat)
 k=ncol(dat)-1
 
-sink("eval.out1")
+sink("evaluation1.out")
 cat("model#    R^2          p-value\n")
 best=matrix(0,k,2)
 for (i in 1:k) {
@@ -41,7 +41,7 @@ optm=sv1[best[,1] >= sout[tn]]
 yi=length(optm)
 pthreshold=0.05
 
-sink("eval.out2")
+sink("evaluation2.out")
 cat("top",tn," best models **********************\n")
 cat("model#    R^2          p-value\n")
 for (i in 1:yi) {
@@ -77,7 +77,7 @@ while (yi != 0) {
 }
 
 
-sink("eval.out3")
+sink("evaluation3.out")
 cat("selected models **********************\n")
 cat("model#    R^2          p-value         Configurations\n")
 k=0
