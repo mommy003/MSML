@@ -20,8 +20,6 @@
 
 
 model_evaluation = function (dat,mv,tn,prev) {
-library(R2ROC)
-
 dat=as.matrix(dat)
 k=ncol(dat)-1
 
