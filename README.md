@@ -1,5 +1,5 @@
 # MSML
-The MSML package has the capability to identify the best-performing model using all available features. To utilize this package, three sets of data, training, validation, and test datasets—are required, each having an equal number of columns. During the evaluation process, we applied a modified version of the recursive feature elimination (RFE) algorithm. RFE is a widely adopted feature selection technique in the context of machine learning and data analysis.
+The MSML package is designed to determine the optimal model(s) by leveraging all available features. To use this package, three sets of data—training, validation, and test datasets—are required, each with an equal number of columns (refer to the inputs instruction below). The package initially generates all possible model configurations. Subsequently, in the evaluation process, we implemented a modified version of the recursive feature elimination (RFE) algorithm. This involves testing all model configurations to obtain optimal weights for each feature using the training dataset. The obtained optimal weights are then applied to the validation dataset to identify the best model configurations. Finally, the test dataset is used to validate the optimal model configurations.
 
 # INSTALLATION
 To use MSML:
@@ -10,7 +10,7 @@ devtools::install_github("mommy003/MSML")
 library(MSML) 
 ```
 # DATA PREPARATION
-Users are required to provide three sets of data—namely, training, validation, and test datasets—with an equal number of columns. Below are examples for clarification:
+Users need to supply three sets of data—specifically, training, validation, and test datasets—with an equal number of columns (but varying numbers of rows). Examples for clarification are provided below:
 ### Training Dataset
 |     V1    |     V2    |     V3    | ... |     Vn    |    phenotype    |
 |-----------|-----------|-----------|-----|-----------|-----------------|
@@ -28,16 +28,17 @@ Users are required to provide three sets of data—namely, training, validation,
 
 
 # DATA ANALYSIS
-## Model Combinations
-To get all the possible model combinations 
+## Model configurations 
+To get all the possible model configurations  
 ```
 data_train <- data_train
 data_valid  <- data_valid
 data_test  <- data_test
 mv=8
-model_combination(data_train,data_valid,data_test,mv)
+model_configuration (data_train,data_valid,data_test,mv)
 ```
-This will generate Polygenic Risk Scores (PRS) based on all possible model combinations for both the validation and test datasets, resulting in variables named models_validation_all and models_test_all. The output file will have following columns
+
+This process will produce predicted values for both the validation and test datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named predict_validation_models and predict_test_models. 
 | phenotype | model_1   | model_2   | ... | Model_N   | 
 |-----------|-----------|-----------|-----|-----------|
 |    ...    |    ...    |    ...    | ... |    ...    |
@@ -47,8 +48,8 @@ To identify best model
 ```
 dat <- read.table("models_test_all")
 mv=8
-tn=15
-prev=0.047
+tn=15 #the number of best model to be chosen
+prev=0.047 #prevalance of the disease
 model_evaluation(dat,mv,tn,prev)
 ```
 This process will generate three distinct output files in the working directory.
