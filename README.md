@@ -44,7 +44,7 @@ This process will produce predicted values for both the validation and test data
 |    ...    |    ...    |    ...    | ... |    ...    |
 
 ## Identify Best Model
-PLease note that user required to load R2ROC library. R2ROC can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC).
+Please note that users are required to load the R2ROC library to identify best models. R2ROC can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC).
 To identify best model
 ```
 dat <- read.table("models_test_all")
