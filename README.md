@@ -35,7 +35,7 @@ data_train <- data_train
 data_valid  <- data_valid
 data_test  <- data_test
 mv=8
-model_configuration (data_train,data_valid,data_test,mv)
+model_configuration(data_train,data_valid,data_test,mv)
 ```
 
 This process will produce predicted values for both the validation and test datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named predict_validation_models and predict_test_models. 
