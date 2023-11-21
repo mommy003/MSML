@@ -1,4 +1,4 @@
-#' model_combination function
+#' model_configuration function
 #' This function will generate PRS based on all possible combianations of model. 
 #' The total number of models required to explore the combinations of these 'n' 
 #' features can be calculated by summing the combinations for each possible 
@@ -20,10 +20,10 @@
 #' data_valid  <- data_valid
 #' data_test  <- data_test
 #' mv=8
-#' model_combination(data_train,data_valid,data_test,mv)
+#' model_configuration(data_train,data_valid,data_test,mv)
 
 
-model_combination = function (data_train,data_valid,data_test,mv) {
+model_configuration = function (data_train,data_valid,data_test,mv) {
 
 
 cat("\n")
@@ -41,7 +41,7 @@ for (i in 1:(mv-1)) {
   }
 }
 
-sink("models_validation_all")
+sink("predict_validation_models")
 write.table(dat,quote=F,col.name=F,row.name=F)
 sink()
 
@@ -62,7 +62,7 @@ for (i in 1:(mv-1)) {
   }
 }
 
-sink("models_test_all")
+sink("predict_test_models")
 write.table(dat,quote=F,col.name=F,row.name=F)
 sink()
 
