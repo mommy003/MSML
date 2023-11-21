@@ -6,7 +6,7 @@
 This function will generate PRS based on all possible combianations of model.
 The total number of models required to explore the combinations of these 'n'
 features can be calculated by summing the combinations for each possible
-number of features, ranging from 1 to 'n' (?\link{C(n,i)}).
+number of features, ranging from 1 to 'n' (C(n,i)).
 where C(n,k)  represents the binomial coefficient or "n choose k,"
 with n denoting the total number of features and k indicating
 the number of features to include in each model.}
@@ -31,7 +31,7 @@ model_configuration function
 This function will generate PRS based on all possible combianations of model.
 The total number of models required to explore the combinations of these 'n'
 features can be calculated by summing the combinations for each possible
-number of features, ranging from 1 to 'n' (?\link{C(n,i)}).
+number of features, ranging from 1 to 'n' (C(n,i)).
 where C(n,k)  represents the binomial coefficient or "n choose k,"
 with n denoting the total number of features and k indicating
 the number of features to include in each model.
