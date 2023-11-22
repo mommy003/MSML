@@ -54,7 +54,11 @@ tn=15 #the number of best model to be chosen
 prev=0.047 #prevalance of the disease
 model_evaluation(dat,mv,tn,prev)
 ```
-This process will generate three distinct output files in the working directory.
+This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
+-	evaluation1. out is the output file which contains R2 and P-values for all models. 
+-	evaluation2. out is the output file which contains R2 and P-values for teen models.
+-	evaluation3. out is the output file which contains R2 and P-values for the best models, which are not significantly different from the top-performing model.
+
 
 # References
 1. Olkin, I. and  Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
