@@ -55,10 +55,57 @@ prev=0.047 #prevalance of the disease
 model_evaluation(dat,mv,tn,prev)
 ```
 This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
--	evaluation1. out is the output file which contains R2 and P-values for all models. 
--	evaluation2. out is the output file which contains R2 and P-values for teen models.
--	evaluation3. out is the output file which contains R2 and P-values for the best models, which are not significantly different from the top-performing model.
+-	evaluation1. out is the output file which contains R2 and P-values for all models.
+```
+model#    R^2          p-value
+1 0.001011416 0.005101934
+2 0.002261588 2.801031e-05
+3 0.002112157 5.162217e-05
+4 0.001127184 0.003111058
+5 0.001302455 0.001481681
+6 0.002058831 6.423818e-05
+7 0.006715322 4.95513e-13
+8 0.002635836 6.101739e-06
+9 0.002677091 5.160931e-06
 
+```
+-	evaluation2. out is the output file which contains R2 and P-values for teen models.
+```
+top 15  best models **********************
+model#    R^2          p-value
+104 0.01095557 2.46233e-20
+108 0.01094464 2.571386e-20
+112 0.01090806 2.97247e-20
+115 0.01095044 2.512925e-20
+116 0.011124 1.263165e-20
+117 0.01139046 4.393853e-21
+118 0.01105642 1.651135e-20
+119 0.01091779 2.860054e-20
+121 0.01121284 8.882822e-21
+122 0.01140319 4.17769e-21
+123 0.0116742 1.427173e-21
+124 0.01145476 3.405484e-21
+125 0.01139483 4.318406e-21
+126 0.01181463 8.180162e-22
+127 0.01207579 2.905659e-22
+```
+-	evaluation3. out is the output file which contains R2 and P-values for the best models, which are not significantly different from the top-performing model.
+```
+selected models **********************
+model#    R^2          p-value         Configurations
+104 0.01095557 2.46233e-20    1 2 3 6 7
+108 0.01094464 2.571386e-20    1 2 5 6 7
+115 0.01095044 2.512925e-20    2 3 4 5 7
+116 0.011124 1.263165e-20    2 3 4 6 7
+117 0.01139046 4.393853e-21    2 3 5 6 7
+118 0.01105642 1.651135e-20    2 4 5 6 7
+121 0.01121284 8.882822e-21    1 2 3 4 5 7
+122 0.01140319 4.17769e-21    1 2 3 4 6 7
+123 0.0116742 1.427173e-21    1 2 3 5 6 7
+124 0.01145476 3.405484e-21    1 2 4 5 6 7
+126 0.01181463 8.180162e-22    2 3 4 5 6 7
+127 0.01207579 2.905659e-22    1 2 3 4 5 6 7
+```
 
 # References
 1. Olkin, I. and  Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
