@@ -34,7 +34,7 @@ To get all the possible model configurations
 data_train <- data_train
 data_valid  <- data_valid
 data_test  <- data_test
-mv=8
+mv=8 #number of columns in training/validation/test dataset
 model_configuration(data_train,data_valid,data_test,mv)
 ```
 
@@ -49,7 +49,7 @@ To identify best model
 ```
 library(R2ROC)
 dat <- models_test
-mv=8
+mv=8 
 tn=15 #the number of best model to be chosen
 prev=0.047 #prevalance of the disease
 model_evaluation(dat,mv,tn,prev)
