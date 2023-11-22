@@ -67,7 +67,6 @@ model#    R^2          p-value
 7 0.006715322 4.95513e-13
 8 0.002635836 6.101739e-06
 9 0.002677091 5.160931e-06
-
 ```
 -	evaluation2. out is the output file which contains R2 and P-values for teen models.
 ```
