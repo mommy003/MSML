@@ -48,7 +48,7 @@ Please note that users are required to load the R2ROC library to identify best m
 To identify best model
 ```
 library(R2ROC)
-dat <- read.table("predict_test_models")
+dat <- models_test
 mv=8
 tn=15 #the number of best model to be chosen
 prev=0.047 #prevalance of the disease
