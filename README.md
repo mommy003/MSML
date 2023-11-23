@@ -60,7 +60,7 @@ This process will also generate all the model configurations. If user want to ch
 out$total_model_configurations$X15
 ```
 
-Which will give following output,
+Which will give the following output,
 ``` 
 [1] 2 4 0 0 0 0 0
 ```
