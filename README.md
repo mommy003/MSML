@@ -43,7 +43,7 @@ This process will produce predicted values for both the validation and test data
 |-----------|-----------|-----------|-----|-----------|
 |    ...    |    ...    |    ...    | ... |    ...    |
 
-This process will also generate all the model configurations (named total_model_configurations)
+This process will also generate all the model configurations (named as total_model_configurations)
 ``` 
 model 1 : 1
 model 2 : 2
