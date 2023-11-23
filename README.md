@@ -55,7 +55,11 @@ out$predict_test  is
 |-----------|-----------|-----------|-----|-----------|
 |    ...    |    ...    |    ...    | ... |    ...    |
 
-This process will also generate all the model configurations. If user want to check model #15, the command should be out$total_model_configurations$X15 which will give following.
+This process will also generate all the model configurations. If user want to check model #15, the command should be  
+``` 
+out$total_model_configurations$X15
+```
+Which will give following output,
 ``` 
 [1] 2 4 0 0 0 0 0
 ```
