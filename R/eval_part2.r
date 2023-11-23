@@ -18,7 +18,6 @@
 #' model_evaluation(dat,mv,tn,prev)
 
 
-
 model_evaluation = function (dat,mv,tn,prev) {
 dat=as.matrix(dat)
 k=ncol(dat)-1

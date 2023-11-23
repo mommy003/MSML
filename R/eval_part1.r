@@ -41,7 +41,7 @@ for (i in 1:(mv-1)) {
   }
 }
 
-sink("predict_validation_models")
+sink("predict_validation")
 write.table(dat,quote=F,col.name=F,row.name=F)
 sink()
 
@@ -62,7 +62,7 @@ for (i in 1:(mv-1)) {
   }
 }
 
-sink("predict_test_models")
+sink("predict_test")
 write.table(dat,quote=F,col.name=F,row.name=F)
 sink()
 
