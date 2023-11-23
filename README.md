@@ -43,6 +43,19 @@ This process will produce predicted values for both the validation and test data
 |-----------|-----------|-----------|-----|-----------|
 |    ...    |    ...    |    ...    | ... |    ...    |
 
+This process will also generate all the model configurations (named total_model_configurations)
+```
+model 1 : 1
+model 2 : 2
+model 3 : 3
+....
+....
+....
+model 125 : 1 3 4 5 6 7
+model 126 : 2 3 4 5 6 7
+model 127 : 1 2 3 4 5 6 7
+```
+
 ## Identify Best Model
 Please note that users are required to load the R2ROC library to identify best models. R2ROC can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC).
 To identify best model
