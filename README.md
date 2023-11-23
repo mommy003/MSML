@@ -45,12 +45,12 @@ model_configuration(data_train,data_valid,data_test,mv)
 ```
 
 This process will produce predicted values for both the validation and test datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named predict_validation and predict_test. 
-- out$predict_validation  is  
+### out$predict_validation  is  
 | phenotype | model_1   | model_2   | ... | Model_N   | 
 |-----------|-----------|-----------|-----|-----------|
 |    ...    |    ...    |    ...    | ... |    ...    |
 
-- out$predict_test  is  
+### out$predict_test  is  
 | phenotype | model_1   | model_2   | ... | Model_N   | 
 |-----------|-----------|-----------|-----|-----------|
 |    ...    |    ...    |    ...    | ... |    ...    |
