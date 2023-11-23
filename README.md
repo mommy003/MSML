@@ -54,7 +54,7 @@ tn=15 # top 15 best models will be considered for the next step (evaluation)
 prev=0.047 #population prevalence of the disease
 out=model_evaluation(dat,mv,tn,prev)
 ```
-### Note: tn can be any number between 1 and the total number of model configurations. It is recommended to set tn equal to the total number of model configurations to search the entire space. When reducing tn, it can speed up the process but may miss some areas of the search space.
+Note: tn can be any number between 1 and the total number of model configurations. It is recommended to set tn equal to the total number of model configurations to search the entire space. When reducing tn, it can speed up the process but may miss some areas of the search space.
 This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
 -	evaluation1.out is the output file which contains R2 and P-values for all models.
 ```
