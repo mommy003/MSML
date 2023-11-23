@@ -27,7 +27,7 @@ dat <- read.table("predict_test_models")
 mv=8
 tn=15
 prev=0.047
-model_evaluation(dat,mv,tn,prev)
+out=model_evaluation(dat,mv,tn,prev)
 }
 \keyword{Identify}
 \keyword{best}

@@ -20,7 +20,7 @@
 #' data_valid  <- data_valid
 #' data_test  <- data_test
 #' mv=8
-#' model_configuration(data_train,data_valid,data_test,mv)
+#' out=model_configuration(data_train,data_valid,data_test,mv)
 
 
 model_configuration = function (data_train,data_valid,data_test,mv) {
@@ -28,7 +28,7 @@ model_configuration = function (data_train,data_valid,data_test,mv) {
 
 cat("\n")
 cat("prediction models **************************\n")
-dat=cbind(data_valid$target);k=0
+df1=cbind(data_valid$target);k=0
 for (i in 1:(mv-1)) {  
   com=combn(seq(1,(mv-1)),i)
   #print(com)
@@ -37,19 +37,16 @@ for (i in 1:(mv-1)) {
     cat("model",k,":",com[,j],"\n")
     mod=lm(as.numeric(data_train$target) ~ as.matrix(data_train[,com[,j]]))
     pred=as.matrix(cbind(1,data_valid[,com[,j]]))%*%as.matrix(mod$coefficients)
-    dat=cbind(dat,pred)
+    df1=cbind(df1,pred)
   }
 }
 
-sink("predict_validation")
-write.table(dat,quote=F,col.name=F,row.name=F)
-sink()
-
+df1=data.frame(df1)
 
 
 cat("\n")
 cat("prediction models **************************\n")
-dat=cbind(data_test$target);k=0
+df2=cbind(data_test$target);k=0
 for (i in 1:(mv-1)) {  
   com=combn(seq(1,(mv-1)),i)
   #print(com)
@@ -58,29 +55,37 @@ for (i in 1:(mv-1)) {
     cat("model",k,":",com[,j],"\n")
     mod=lm(as.numeric(data_train$target) ~ as.matrix(data_train[,com[,j]]))
     pred=as.matrix(cbind(1,data_test[,com[,j]]))%*%as.matrix(mod$coefficients)
-    dat=cbind(dat,pred)
+    df2=cbind(df2,pred)
   }
 }
 
-sink("predict_test")
-write.table(dat,quote=F,col.name=F,row.name=F)
-sink()
+df2=data.frame(df2)
 
 
 
 
-sink("total_model_configurations")
+num_row=k
 #cat("prediction models **************************\n")
-dat=cbind(data_valid$target);k=0
-for (i in 1:(mv-1)) {  
+df3=matrix(0,num_row,7);k=0
+for (i in 1:(mv-1)) {
   com=combn(seq(1,(mv-1)),i)
   #print(com)
   for (j in 1:ncol(com)) {
     k=k+1
     cat("model",k,":",com[,j],"\n")
+    df3[k,1:length(com[,j])]=com[,j]
    }
 }
-sink()
+
+df3=data.frame(t(df3))
+
+z = list(
+  "predict_validation" = df1,
+  "predict_test" = df2,
+  "total_model_configurations" = df3
+  )
+
+return(z)
 
 
 }

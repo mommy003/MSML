@@ -41,7 +41,7 @@ data_train <- data_train
 data_valid  <- data_valid
 data_test  <- data_test
 mv=8
-model_configuration(data_train,data_valid,data_test,mv)
+out=model_configuration(data_train,data_valid,data_test,mv)
 }
 \keyword{All}
 \keyword{combinations}

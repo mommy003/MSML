@@ -15,7 +15,7 @@
 #' mv=8
 #' tn=15
 #' prev=0.047
-#' model_evaluation(dat,mv,tn,prev)
+#' out=model_evaluation(dat,mv,tn,prev)
 
 
 model_evaluation = function (dat,mv,tn,prev) {
