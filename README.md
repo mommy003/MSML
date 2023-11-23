@@ -45,21 +45,19 @@ model_configuration(data_train,data_valid,data_test,mv)
 ```
 
 This process will produce predicted values for both the validation and test datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named predict_validation and predict_test. 
+out$predict_validation  is  
 | phenotype | model_1   | model_2   | ... | Model_N   | 
 |-----------|-----------|-----------|-----|-----------|
 |    ...    |    ...    |    ...    | ... |    ...    |
 
-This process will also generate all the model configurations (named as total_model_configurations)
+out$predict_test  is  
+| phenotype | model_1   | model_2   | ... | Model_N   | 
+|-----------|-----------|-----------|-----|-----------|
+|    ...    |    ...    |    ...    | ... |    ...    |
+
+This process will also generate all the model configurations. If user want to check model #15, the command should be out$total_model_configurations$X15 which will give following.
 ``` 
-model 1 : 1
-model 2 : 2
-model 3 : 3
-....
-....
-....
-model 125 : 1 3 4 5 6 7
-model 126 : 2 3 4 5 6 7
-model 127 : 1 2 3 4 5 6 7
+[1] 2 4 0 0 0 0 0
 ```
 
 ## Identify Best Model
