@@ -38,7 +38,7 @@ mv=8 #number of columns in training/validation/test dataset
 model_configuration(data_train,data_valid,data_test,mv)
 ```
 
-This process will produce predicted values for both the validation and test datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named predict_validation_models and predict_test_models. 
+This process will produce predicted values for both the validation and test datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named predict_validation and predict_test. 
 | phenotype | model_1   | model_2   | ... | Model_N   | 
 |-----------|-----------|-----------|-----|-----------|
 |    ...    |    ...    |    ...    | ... |    ...    |
@@ -48,14 +48,15 @@ Please note that users are required to load the R2ROC library to identify best m
 To identify best model
 ```
 library(R2ROC)
-dat <- models_test
+dat <- predict_test.
 mv=8 
-tn=15 #the number of best model to be chosen
-prev=0.047 #prevalance of the disease
-model_evaluation(dat,mv,tn,prev)
+tn=15 # top 15 best models will be considered for the next step (evaluation) 
+prev=0.047 #population prevalence of the disease
+out=model_evaluation(dat,mv,tn,prev)
 ```
+### Note: tn can be any number between 1 and the total number of model configurations. It is recommended to set tn equal to the total number of model configurations to search the entire space. When reducing tn, it can speed up the process but may miss some areas of the search space.
 This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
--	evaluation1. out is the output file which contains R2 and P-values for all models.
+-	evaluation1.out is the output file which contains R2 and P-values for all models.
 ```
 model#    R^2          p-value
 1 0.001011416 0.005101934
@@ -68,7 +69,7 @@ model#    R^2          p-value
 8 0.002635836 6.101739e-06
 9 0.002677091 5.160931e-06
 ```
--	evaluation2. out is the output file which contains R2 and P-values for teen models.
+-	evaluation2.out is the output file which contains R2 and P-values for the top ‘tn’ models (see definition of ‘tn’ above).
 ```
 top 15  best models **********************
 model#    R^2          p-value
@@ -88,7 +89,7 @@ model#    R^2          p-value
 126 0.01181463 8.180162e-22
 127 0.01207579 2.905659e-22
 ```
--	evaluation3. out is the output file which contains R2 and P-values for the best models, which are not significantly different from the top-performing model.
+-	evaluation3.out is the output file which contains R2 and P-values for the best models, which are not significantly different from the top-performing model.
 ```
 selected models **********************
 model#    R^2          p-value         Configurations
