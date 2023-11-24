@@ -2,7 +2,7 @@
 #'
 #' This function will identify best model in validation and test dataset. 
 #' @param dat This is the matrix for all the combinations of model
-#' @param mv The total number of columns in data_train/data_valid/data_test
+#' @param mv The total number of columns in data_train/data_valid
 #' @param tn The total no of best models to be identified
 #' @param prev The prevalance of disease in the data
 #' @keywords Identify best models
@@ -11,7 +11,7 @@
 #' @return This function will generate all possible model outcomes for validation and test dataset
 #' \item{}{}
 #' @examples
-#' dat <- read.table("predict_test_models")
+#' dat <- predict_validation
 #' mv=8
 #' tn=15
 #' prev=0.047
@@ -23,12 +23,16 @@ dat=as.matrix(dat)
 k=ncol(dat)-1
 
 sink("evaluation1.out")
-cat("model#    R^2          p-value\n")
-best=matrix(0,k,2)
+cat("model#    AUC    p-value      R^2          p-value\n")
+best=matrix(0,k,4)
 for (i in 1:k) {
   out=summary(lm(dat[,1]~dat[,(1+i)]))
-  best[i,1]=out$r.squared
-  best[i,2]=pf(out$fstatistic[1],out$fstatistic[2],out$fstatistic[3],lower.tail=F)
+  best[i,3]=out$r.squared
+best[i,4]=pf(out$fstatistic[1],out$fstatistic[2],out$fstatistic[3],lower.tail=F)
+out=auc_var(dat[,c(1,1+i)],1, nrow(dat),prev)
+best[i,1]=out$auc
+best[i,2]=out$p
+
   cat(i,best[i,],"\n")
 }
 sink()
@@ -93,6 +97,3 @@ for (i in 1:(mv-1)) {
 sink()
 
 }
-
-
-

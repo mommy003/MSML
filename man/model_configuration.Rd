@@ -3,7 +3,7 @@
 \name{model_configuration}
 \alias{model_configuration}
 \title{model_configuration function
-This function will generate PRS based on all possible combianations of model.
+This function will generate PRS based on all possible combinations of model.
 The total number of models required to explore the combinations of these 'n'
 features can be calculated by summing the combinations for each possible
 number of features, ranging from 1 to 'n' (C(n,i)).
@@ -11,16 +11,14 @@ where C(n,k)  represents the binomial coefficient or "n choose k,"
 with n denoting the total number of features and k indicating
 the number of features to include in each model.}
 \usage{
-model_configuration(data_train, data_valid, data_test, mv)
+model_configuration(data_train, data_valid, mv)
 }
 \arguments{
 \item{data_train}{This is the matrix for training dataset}
 
 \item{data_valid}{This is the matrix for validation dataset}
 
-\item{data_test}{This is the matrix for test dataset}
-
-\item{mv}{The total number of columns in data_train/data_valid/data_test}
+\item{mv}{The total number of columns in data_train/data_valid}
 }
 \value{
 This function will generate all possible model outcomes for validation and test dataset
@@ -28,7 +26,7 @@ This function will generate all possible model outcomes for validation and test 
 }
 \description{
 model_configuration function
-This function will generate PRS based on all possible combianations of model.
+This function will generate PRS based on all possible combinations of model.
 The total number of models required to explore the combinations of these 'n'
 features can be calculated by summing the combinations for each possible
 number of features, ranging from 1 to 'n' (C(n,i)).
@@ -39,9 +37,8 @@ the number of features to include in each model.
 \examples{
 data_train <- data_train
 data_valid  <- data_valid
-data_test  <- data_test
 mv=8
-out=model_configuration(data_train,data_valid,data_test,mv)
+out=model_configuration(data_train,data_valid)
 }
 \keyword{All}
 \keyword{combinations}

@@ -9,7 +9,7 @@ model_evaluation(dat, mv, tn, prev)
 \arguments{
 \item{dat}{This is the matrix for all the combinations of model}
 
-\item{mv}{The total number of columns in data_train/data_valid/data_test}
+\item{mv}{The total number of columns in data_train/data_valid}
 
 \item{tn}{The total no of best models to be identified}
 
@@ -23,7 +23,7 @@ This function will generate all possible model outcomes for validation and test 
 This function will identify best model in validation and test dataset.
 }
 \examples{
-dat <- read.table("predict_test_models")
+dat <- predict_validation
 mv=8
 tn=15
 prev=0.047
