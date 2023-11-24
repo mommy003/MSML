@@ -136,9 +136,11 @@ model#    R^2          p-value         Configurations
 127 0.01207579 2.905659e-22    1 2 3 4 5 6 7
 ```
 For backup, make a copy of the result files, e.g.
+```
 cp evaluation1.out evaluation1.out_v
 cp evaluation2.out evaluation2.out_v
 cp evaluation3.out evaluation3.out_v
+```
 
 ### Validation of this procedure using an independent test dataset
 Repeat the same procedure with an independent test dataset (e.g. data_test in this example)
