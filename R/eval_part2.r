@@ -46,7 +46,7 @@ pthreshold=0.05
 
 sink("evaluation2.out")
 cat("top",tn," best models **********************\n")
-cat("model#    R^2          p-value\n")
+cat("model#   AUC    p-value    R^2          p-value\n")
 for (i in 1:yi) {
   cat(optm[i],best[optm[i],],"\n")
 }
@@ -82,7 +82,7 @@ while (yi != 0) {
 
 sink("evaluation3.out")
 cat("selected models **********************\n")
-cat("model#    R^2          p-value         Configurations\n")
+cat("model#    AUC    p-value   R^2          p-value         Configurations\n")
 k=0
 for (i in 1:(mv-1)) {
   com=combn(seq(1,(mv-1)),i)
