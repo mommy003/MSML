@@ -69,7 +69,7 @@ which will give the following output:
 ```
 
 ## Identifying Best Model
-Please note that users are required to load the R2ROC or r2redux  library to identify best models. R2ROC or r2redux can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC). To identify best model
+Please note that users are required to load the R2ROC or r2redux  library to identify the best models. R2ROC or r2redux can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC and https://github.com/mommy003/r2redux). To identify best model
 ```
 install.packages("R2ROC")
 install.packages("r2redux")
