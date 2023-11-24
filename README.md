@@ -16,7 +16,7 @@ devtools::install_github("mommy003/MSML")
 library(MSML) 
 ```
 # DATA PREPARATION
-Users need to supply three sets of data—specifically, training, validation, and test datasets—with an equal number of columns (but varying numbers of rows). Examples for clarification are provided below:
+Users need to supply two sets of data—specifically, training and validation datasets—with an equal number of columns (but varying numbers of rows depending on sample sizes in those datasets). Examples for clarification are provided below:
 ### Training Dataset
 |     V1    |     V2    |     V3    | ... |     Vn    |    phenotype    |
 |-----------|-----------|-----------|-----|-----------|-----------------|
@@ -27,58 +27,63 @@ Users need to supply three sets of data—specifically, training, validation, an
 |-----------|-----------|-----------|-----|-----------|-----------------|
 |    ...    |    ...    |    ...    | ... |    ...    |       ...       |
 
-### Test Dataset
-|     V1    |     V2    |     V3    | ... |     Vn    |    phenotype    |
-|-----------|-----------|-----------|-----|-----------|-----------------|
-|    ...    |    ...    |    ...    | ... |    ...    |       ...       |
-
+Where V1 to Vn represent the features (e.g. PRSs) incorporated in the datasets. The number of columns remains consistent across the datasets, while the number of rows adjusts to accommodate the varying sample sizes in each dataset
 
 # DATA ANALYSIS
 ## Model configurations 
 To get all the possible model configurations  
 ```
-data_train <- data_train
-data_valid  <- data_valid
-data_test  <- data_test
-mv=8 #number of columns in training/validation/test dataset
+data_train <- data_train (user should store their own training dataset here)
+data_valid  <- data_valid (user should store their own validation dataset here)
+mv=8 (number of columns in training/validation/test dataset)
 out=model_configuration(data_train,data_valid,data_test,mv)
 ```
 
-This process will produce predicted values for both the validation and test datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named predict_validation and predict_test. 
+This process will produce predicted values for both the validation and test datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named ‘predict_validation’ and ‘total_model_configurations’. 
 #### out$predict_validation  is  
 | phenotype | model_1   | model_2   | ... | Model_N   | 
 |-----------|-----------|-----------|-----|-----------|
 |    ...    |    ...    |    ...    | ... |    ...    |
 
-#### out$predict_test  is  
-| phenotype | model_1   | model_2   | ... | Model_N   | 
-|-----------|-----------|-----------|-----|-----------|
-|    ...    |    ...    |    ...    | ... |    ...    |
 
-This process will also generate all the model configurations. If user want to check model #15, the command should be  
-``` 
+#### out$total_model_configurations$X15
+```
+X1 X2 X3 X4 X5 X6 X7 X8 X9 X10 X11 X12 X13 X14 X15 X16 X17 X18 ……
+1  1  2  3  4  5  6  7  1  1   1   1   1   1   2   2   2   2   2   ……
+2  0  0  0  0  0  0  0  2  3   4   5   6   7   3   4   5   6   7   ……
+3  0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0   0   ……
+4  0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0   0   ……
+5  0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0   0   ……
+6  0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0   0   ……
+7  0  0  0  0  0  0  0  0  0   0   0   0   0   0   0   0   0   0   ……
+```
+which shows which model fits which features. For instance, in the 15th model, the 2nd and 4th features are fitted in the training and validation datasets. To extract features fitted in a specific model (e.g., 15th model):  
+
+```
 out$total_model_configurations$X15
 ```
 
-Which will give the following output,
-``` 
+which will give the following output:
+```
 [1] 2 4 0 0 0 0 0
 ```
 
 ## Identify Best Model
-Please note that users are required to load the R2ROC library to identify best models. R2ROC can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC).
-To identify best model
+Please note that users are required to load the R2ROC or r2redux  library to identify best models. R2ROC or r2redux can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC). To identify best model
 ```
+install.packages("R2ROC")
+install.packages("r2redux")
 library(R2ROC)
-dat <- predict_test
+library(r2redux)
+dat <- predict_validation
 mv=8 
 tn=15 # top 15 best models will be considered for the next step (evaluation) 
 prev=0.047 #population prevalence of the disease
 model_evaluation(dat,mv,tn,prev)
 ```
-Note: tn can be any number between 1 and the total number of model configurations. It is recommended to set tn equal to the total number of model configurations to search the entire space. When reducing tn, it can speed up the process but may miss some areas of the search space.
-This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
--	evaluation1.out is the output file which contains R2 and P-values for all models.
+Note: tn can be any number between 1 and the total number of model configurations. It is recommended to set tn equal to the total number of model configurations to search the entire space. When reducing tn, it can speed up the process but may miss some areas of the search space. This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
+
+-	evaluation1.out is the output file which contains AUC, R2 and P-values for all models.
 ```
 model#    R^2          p-value
 1 0.001011416 0.005101934
@@ -90,8 +95,10 @@ model#    R^2          p-value
 7 0.006715322 4.95513e-13
 8 0.002635836 6.101739e-06
 9 0.002677091 5.160931e-06
+.....
+.....
 ```
--	evaluation2.out is the output file which contains R2 and P-values for the top ‘tn’ models (see definition of ‘tn’ above).
+-	evaluation2.out is the output file which contains AUC, R2 and P-values for the top ‘tn’ models according to the AUC or R^2 (see definition of ‘tn’ above).
 ```
 top 15  best models **********************
 model#    R^2          p-value
@@ -128,6 +135,21 @@ model#    R^2          p-value         Configurations
 126 0.01181463 8.180162e-22    2 3 4 5 6 7
 127 0.01207579 2.905659e-22    1 2 3 4 5 6 7
 ```
+For backup, make a copy of the result files, e.g.
+cp evaluation1.out evaluation1.out_v
+cp evaluation2.out evaluation2.out_v
+cp evaluation3.out evaluation3.out_v
+
+### Validation of this procedure using an independent test dataset
+Repeat the same procedure with an independent test dataset (e.g. data_test in this example)
+```
+data_train <- data_train (user should store the same training dataset here)
+data_valid  <- data_test (user should store the independent test dataset here)
+out=model_configuration(data_train,data_valid,data_test,mv)
+dat <- predict_validation
+model_evaluation(dat,mv,tn,prev)
+```
+Then, the output files with the independent test dataset can be compared with the previous results (evaluation1.out_v, evaluation2.out_v and evaluation3.out_v).  
 
 # References
 1. Olkin, I. and  Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
