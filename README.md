@@ -84,7 +84,7 @@ model_evaluation(dat,mv,tn,prev)
 ```
 Note: tn can be any number between 1 and the total number of model configurations. It is recommended to set tn equal to the total number of model configurations to search the entire space. When reducing tn, it can speed up the process but may miss some areas of the search space. This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
 
-Note: pthreshold=0.05 and method=”R2ROC” are defaults for optional arguments. When the user wants to change the significance level or method when comparing models, additional arguments can be added, e.g. model_evaluation(dat,mv,tn,prev,pthreshold=0.5,method=”r2redux”)
+Note: pthreshold=0.05 and method="R2ROC" are defaults for optional arguments. When the user wants to change the significance level or method when comparing models, additional arguments can be added, e.g. model_evaluation(dat,mv,tn,prev,pthreshold=0.5,method=”r2redux”)
 where pthreshold=0.5 results in a more conservative selection of best models (i.e., fewer models to be selected),#, and r2redux is based on the R^2 metric rather than AUC.
 
 -	evaluation1.out is the output file which contains AUC, R2, and P-values for all models.
@@ -157,7 +157,7 @@ out=model_configuration(data_train,data_valid,mv)
 dat <- out$predict_validation
 model_evaluation(dat,mv,tn,prev,pthreshold=0.5)
 ```
-Then, the output files with the independent test dataset can be compared with the previous results (evaluation1.out_v, evaluation2.out_v and evaluation3.out_v).  
+Then, the output files with the independent test dataset can be compared with the previous results (evaluation1.out_v, evaluation2.out_v, and evaluation3.out_v).  
 
 # References
 1. Olkin, I. and  Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
