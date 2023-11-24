@@ -46,7 +46,7 @@ This process will produce predicted values for both the validation and test data
 |    ...    |    ...    |    ...    | ... |    ...    |
 
 
-#### out$total_model_configurations$X15
+#### out$total_model_configurations
 ```
 X1 X2 X3 X4 X5 X6 X7 X8 X9 X10 X11 X12 X13 X14 X15 X16 X17 X18 ……
 1  1  2  3  4  5  6  7  1  1   1   1   1   1   2   2   2   2   2   ……
