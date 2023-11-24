@@ -147,6 +147,7 @@ Repeat the same procedure with an independent test dataset (e.g. data_test in th
 ```
 data_train <- data_train #(user should store the same training dataset here)
 data_valid  <- data_test #(user should store the independent test dataset here)
+mv=8 #(number of columns in training/validation/test dataset)
 out=model_configuration(data_train,data_valid,data_test,mv)
 dat <- predict_test
 model_evaluation(dat,mv,tn,prev)
