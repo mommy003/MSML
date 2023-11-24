@@ -36,11 +36,11 @@ To get all the possible model configurations
 data_train <- data_train (user should store their own training dataset here)
 data_valid  <- data_valid (user should store their own validation dataset here)
 mv=8 (number of columns in training/validation/test dataset)
-out=model_configuration(data_train,data_valid,data_test,mv)
+out=model_configuration(data_train,data_valid,mv)
 ```
 
 This process will produce predicted values for both the validation and test datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named ‘predict_validation’ and ‘total_model_configurations’. 
-#### out$predict_validation  is  
+#### out$predict_validation  
 | phenotype | model_1   | model_2   | ... | Model_N   | 
 |-----------|-----------|-----------|-----|-----------|
 |    ...    |    ...    |    ...    | ... |    ...    |
