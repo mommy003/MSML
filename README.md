@@ -33,9 +33,9 @@ Where V1 to Vn represent the features (e.g. PRSs) incorporated in the datasets. 
 ## Model configurations 
 To get all the possible model configurations  
 ```
-data_train <- data_train (user should store their own training dataset here)
-data_valid  <- data_valid (user should store their own validation dataset here)
-mv=8 (number of columns in training/validation/test dataset)
+data_train <- data_train #(user should store their own training dataset here)
+data_valid  <- data_valid #(user should store their own validation dataset here)
+mv=8 #(number of columns in training/validation/test dataset)
 out=model_configuration(data_train,data_valid,mv)
 ```
 
