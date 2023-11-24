@@ -154,7 +154,7 @@ data_train <- data_train #(user should store the same training dataset here)
 data_valid  <- data_test #(user should store the independent test dataset here)
 mv=8 #(number of columns in training/validation/test dataset)
 out=model_configuration(data_train,data_valid,mv)
-dat <- out$predict_validationtest
+dat <- out$predict_validation
 model_evaluation(dat,mv,tn,prev,pthreshold=0.5)
 ```
 Then, the output files with the independent test dataset can be compared with the previous results (evaluation1.out_v, evaluation2.out_v and evaluation3.out_v).  
