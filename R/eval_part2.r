@@ -18,7 +18,8 @@
 #' model_evaluation(dat,mv,tn,prev)
 
 
-model_evaluation = function (dat,mv,tn,prev) {
+model_evaluation = function (dat,mv,tn,prev,pthreshold=0.05,method="R2ROC") {
+
 dat=as.matrix(dat)
 k=ncol(dat)-1
 
@@ -42,7 +43,6 @@ sout=sort(best[,1],decreasing=T)
 sv1=seq(1,length(best[,1]))
 optm=sv1[best[,1] >= sout[tn]]
 yi=length(optm)
-pthreshold=0.05
 
 sink("evaluation2.out")
 cat("top",tn," best models **********************\n")
@@ -64,7 +64,17 @@ while (yi != 0) {
   cat("best model:",optm,"\n")
   for (i in 1:length(optm)) {
     for (j in 1:length(optm)) {
-      out=auc_diff(dat[,c(1,(1+optm[i]),(1+optm[j]))],1,2,nrow(dat),prev)
+      if (method=="R2ROC") {
+        out=auc_diff(dat[,c(1,(1+optm[i]),(1+optm[j]))],1,2,nrow(dat),prev)
+      }
+      else if (method=="r2redux") {
+        out=r2_diff(dat[,c(1,(1+optm[i]),(1+optm[j]))],1,2,nrow(dat))
+        out$p=out$r2_based_p
+      }
+      else {
+        cat("Error: method should be R2ROC or r2redux","\n")
+      }
+
       if (out$mean_diff>0 & out$p<pthreshold) {
         cat(optm[i],optm[j],"\n")
         if (!is.element(j,optm2)) {

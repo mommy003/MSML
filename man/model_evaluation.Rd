@@ -4,7 +4,7 @@
 \alias{model_evaluation}
 \title{model_evaluation function}
 \usage{
-model_evaluation(dat, mv, tn, prev)
+model_evaluation(dat, mv, tn, prev, pthreshold = 0.05, method = "R2ROC")
 }
 \arguments{
 \item{dat}{This is the matrix for all the combinations of model}
