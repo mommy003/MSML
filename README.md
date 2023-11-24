@@ -145,10 +145,10 @@ cp evaluation3.out evaluation3.out_v
 ### Validation of this procedure using an independent test dataset
 Repeat the same procedure with an independent test dataset (e.g. data_test in this example)
 ```
-data_train <- data_train (user should store the same training dataset here)
-data_valid  <- data_test (user should store the independent test dataset here)
+data_train <- data_train #(user should store the same training dataset here)
+data_valid  <- data_test #(user should store the independent test dataset here)
 out=model_configuration(data_train,data_valid,data_test,mv)
-dat <- predict_validation
+dat <- predict_test
 model_evaluation(dat,mv,tn,prev)
 ```
 Then, the output files with the independent test dataset can be compared with the previous results (evaluation1.out_v, evaluation2.out_v and evaluation3.out_v).  
