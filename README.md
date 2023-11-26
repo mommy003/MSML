@@ -82,7 +82,7 @@ prev=0.047 #population prevalence of the disease
 
 model_evaluation(dat,mv,tn,prev)
 ```
-Note: tn can be any number between 1 and the total number of model configurations. It is recommended to set tn equal to the total number of model configurations to search the entire space. When reducing tn, it can speed up the process but may miss some areas of the search space. This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
+$\color{black}{Note:}$  tn can be any number between 1 and the total number of model configurations. It is recommended to set tn equal to the total number of model configurations to search the entire space. When reducing tn, it can speed up the process but may miss some areas of the search space. This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
 
 Note: pthreshold=0.05 and method="R2ROC" are defaults for optional arguments. When the user wants to change the significance level or method when comparing models, additional arguments can be added, e.g. model_evaluation(dat,mv,tn,prev,pthreshold=0.5,method="r2redux")
 where pthreshold=0.5 results in a more conservative selection of best models (i.e., fewer models to be selected), and r2redux is based on the R2 metric rather than AUC.
