@@ -1,13 +1,13 @@
 #' model_evaluation function
 #'
-#' This function will identify best model in validation and test dataset. 
-#' @param dat This is the matrix for all the combinations of model
+#' This function will identify the best model in the validation and test dataset. 
+#' @param dat This is the matrix for all the combinations of the model
 #' @param mv The total number of columns in data_train/data_valid
 #' @param tn The total no of best models to be identified
-#' @param prev The prevalance of disease in the data
+#' @param prev The prevalence of disease in the data
 #' @keywords Identify best models
 #' @export
-#' @importFrom stats D qnorm
+#' @importFrom stats D 
 #' @return This function will generate all possible model outcomes for validation and test dataset
 #' \item{}{}
 #' @examples

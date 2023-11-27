@@ -3,4 +3,3 @@
 export(model_configuration)
 export(model_evaluation)
 importFrom(stats,D)
-importFrom(stats,qnorm)

@@ -7,20 +7,20 @@
 model_evaluation(dat, mv, tn, prev, pthreshold = 0.05, method = "R2ROC")
 }
 \arguments{
-\item{dat}{This is the matrix for all the combinations of model}
+\item{dat}{This is the matrix for all the combinations of the model}
 
 \item{mv}{The total number of columns in data_train/data_valid}
 
 \item{tn}{The total no of best models to be identified}
 
-\item{prev}{The prevalance of disease in the data}
+\item{prev}{The prevalence of disease in the data}
 }
 \value{
 This function will generate all possible model outcomes for validation and test dataset
 \item{}{}
 }
 \description{
-This function will identify best model in validation and test dataset.
+This function will identify the best model in the validation and test dataset.
 }
 \examples{
 dat <- predict_validation

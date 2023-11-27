@@ -1,5 +1,5 @@
 #' model_configuration function
-#' This function will generate PRS based on all possible combinations of model. 
+#' This function will generate features (e.g. PRSs) based on all possible combinations of model. 
 #' The total number of models required to explore the combinations of these 'n' 
 #' features can be calculated by summing the combinations for each possible 
 #' number of features, ranging from 1 to 'n' (C(n,i)).
@@ -11,7 +11,7 @@
 #' @param mv The total number of columns in data_train/data_valid
 #' @keywords All possible model combinations
 #' @export
-#' @importFrom stats D qnorm
+#' @importFrom stats D  
 #' @return This function will generate all possible model outcomes for validation and test dataset
 #' \item{}{}
 #' @examples
@@ -45,7 +45,7 @@ cat("\n")
 
 num_row=k
 #cat("prediction models **************************\n")
-df3=matrix(0,num_row,7);k=0
+df3=matrix(0,num_row,(mv-1));k=0
 for (i in 1:(mv-1)) {
   com=combn(seq(1,(mv-1)),i)
   #print(com)
