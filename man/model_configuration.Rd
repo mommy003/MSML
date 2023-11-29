@@ -38,7 +38,7 @@ the number of features to include in each model.
 data_train <- data_train
 data_valid  <- data_valid
 mv=8
-out=model_configuration(data_train,data_valid)
+out=model_configuration(data_train,data_valid,mv)
 }
 \keyword{All}
 \keyword{combinations}
