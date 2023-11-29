@@ -18,7 +18,7 @@
 #' data_train <- data_train
 #' data_valid  <- data_valid
 #' mv=8
-#' out=model_configuration(data_train,data_valid)
+#' out=model_configuration(data_train,data_valid,mv)
 
 
 model_configuration = function (data_train,data_valid, mv) {
