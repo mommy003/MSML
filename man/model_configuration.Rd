@@ -2,14 +2,7 @@
 % Please edit documentation in R/eval_part1.r
 \name{model_configuration}
 \alias{model_configuration}
-\title{model_configuration function
-This function will generate features (e.g. PRSs) based on all possible combinations of model.
-The total number of models required to explore the combinations of these 'n'
-features can be calculated by summing the combinations for each possible
-number of features, ranging from 1 to 'n' (C(n,i)).
-where C(n,k)  represents the binomial coefficient or "n choose k,"
-with n denoting the total number of features and k indicating
-the number of features to include in each model.}
+\title{model_configuration function}
 \usage{
 model_configuration(data_train, data_valid, mv)
 }
@@ -25,7 +18,6 @@ This function will generate all possible model outcomes for validation and test 
 \item{}{}
 }
 \description{
-model_configuration function
 This function will generate features (e.g. PRSs) based on all possible combinations of model.
 The total number of models required to explore the combinations of these 'n'
 features can be calculated by summing the combinations for each possible

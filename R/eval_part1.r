@@ -1,4 +1,5 @@
 #' model_configuration function
+#'
 #' This function will generate features (e.g. PRSs) based on all possible combinations of model. 
 #' The total number of models required to explore the combinations of these 'n' 
 #' features can be calculated by summing the combinations for each possible 
