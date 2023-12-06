@@ -2,4 +2,9 @@
 
 export(model_configuration)
 export(model_evaluation)
+import(R2ROC)
+import(r2redux)
+import(utils)
 importFrom(stats,D)
+importFrom(stats,lm)
+importFrom(stats,pf)
