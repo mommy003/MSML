@@ -39,7 +39,7 @@ mv=8 #(number of columns in training/validation/test dataset)
 out=model_configuration(data_train,data_valid,mv)
 ```
 
-This process will produce predicted values for both the validation and test datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named ‘predict_validation’ and ‘total_model_configurations’. 
+This process will produce predicted values for the validation datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named ‘predict_validation’ and ‘total_model_configurations’. 
 #### out$predict_validation  
 | phenotype | model_1   | model_2   | ... | Model_N   | 
 |-----------|-----------|-----------|-----|-----------|
