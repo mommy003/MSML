@@ -140,6 +140,8 @@ model#    AUC    p-value     R^2          p-value         Configurations
 126 0.615619 2.128613e-16 0.007599588 6.293702e-16    2 3 4 5 6 7
 127 0.6194564 1.882152e-17 0.008118063 6.500205e-17    1 2 3 4 5 6 7
 ```
+$\color{black}{Note:}$  If a user aims to identify the best model, they can make a selection based on the highest AUC estimates, such as choosing model 124, or opt for Parsimony models, for instance, selecting model 72.
+
 For backup, make a copy of the result files, e.g.
 ```
 cp evaluation1.out evaluation1.out_v
