@@ -77,7 +77,7 @@ library(R2ROC)
 library(r2redux)
 dat <- out$predict_validation
 mv=8 
-tn=15 # top 15 best models will be considered for the next step (evaluation) 
+tn=15 # top 15 best models will be considered for the next step (evaluation), but it is recoended to use 127.
 prev=0.047 #population prevalence of the disease
 
 model_evaluation(dat,mv,tn,prev)
