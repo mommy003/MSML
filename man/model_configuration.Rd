@@ -7,15 +7,14 @@
 model_configuration(data_train, data_valid, mv)
 }
 \arguments{
-\item{data_train}{This is the matrix for training dataset}
+\item{data_train}{This is the matrix for the training dataset}
 
-\item{data_valid}{This is the matrix for validation dataset}
+\item{data_valid}{This is the matrix for the validation dataset}
 
 \item{mv}{The total number of columns in data_train/data_valid}
 }
 \value{
 This function will generate all possible model outcomes for validation and test dataset
-\item{}{}
 }
 \description{
 This function will generate features (e.g. PRSs) based on all possible combinations of model.
@@ -27,10 +26,18 @@ with n denoting the total number of features and k indicating
 the number of features to include in each model.
 }
 \examples{
-#data_train <- data_train
-#data_valid  <- data_valid
-#mv=8
-#out=model_configuration(data_train,data_valid,mv)
+\dontrun{
+data_train <- data_train
+data_valid  <- data_valid
+mv=8
+out=model_configuration(data_train,data_valid,mv)
+#This process will produce predicted values for the validation datasets,
+#corresponding to each model configuration trained on the training dataset.
+#The outcome of this function will yield variables named 'predict_validation'
+#and 'total_model_configurations.
+#To print the outcomes run out$predict_validation and out$total_model_configurations.
+#For details (see https://github.com/mommy003/MSML). 
+}
 }
 \keyword{All}
 \keyword{combinations}

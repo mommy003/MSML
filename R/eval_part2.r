@@ -13,14 +13,16 @@
 #' @import r2redux
 #' @import R2ROC
 #' @return This function will generate all possible model outcomes for validation and test dataset
-#' \item{}{}
-#' @examples
-#' #dat <- predict_validation
-#' #mv=8
-#' #tn=15
-#' #prev=0.047
-#' #model_evaluation(dat,mv,tn,prev)
-
+#' @examples \dontrun{
+#' dat <- predict_validation
+#' mv=8
+#' tn=15
+#' prev=0.047
+#' model_evaluation(dat,mv,tn,prev)
+#' #This process will generate three distinct output files in the working directory
+#' #named evaluation1.out, evaluation2.out and evaluation3.out.
+#' #For details (see https://github.com/mommy003/MSML).
+#' }
 
 model_evaluation = function (dat,mv,tn,prev,pthreshold=0.05,method="R2ROC") {
 
@@ -61,11 +63,11 @@ sv1=seq(1,length(best[,1]))
 optm=sv1[best[,1] >= sout[tn]]
 optm2=array(0,length(optm));yi=1
 cat("\n")
-cat("backward selection  **********************\n")
+#cat("backward selection  **********************\n")
 while (yi != 0) {
   cat("\n")
   yi=0;optm2=0
-  cat("best model:",optm,"\n")
+  #cat("best model:",optm,"\n")
   for (i in 1:length(optm)) {
     for (j in 1:length(optm)) {
       if (method=="R2ROC") {

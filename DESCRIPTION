@@ -3,7 +3,7 @@ Title: Model Selection Based on Machine Learning (ML)
 Version: 1.0.0.0
 Authors@R: c(person("Hong", "Lee", role = c("aut","cph"),email = "Hong.Lee@unisa.edu.au"),
              person("Moksedul", "Momin", role = c("aut", "cre","cph"), email = "cvasu.momin@gmail.com"))
-Description: The MSML package is designed to determine the optimal model(s) by leveraging all available features. 
+Description: Models evaluation based on a modified version of the recursive feature elimination (RFE) algorithm. This package is designed to determine the optimal model(s) by leveraging all available features. (Olkin and Finn 1995) <https://doi.org/10.1037/1082-989X.12.4.399>, (DeLong et al. 1998) <https://doi.org/10.2307/2531595>, and (Guyon et al. 2002) <https://doi.org/10.1023/A:1012487302797>.
 License: GPL (>=3)
 URL: https://github.com/mommy003/MSML
 Encoding: UTF-8

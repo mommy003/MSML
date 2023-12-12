@@ -11,7 +11,7 @@
 #'   \item{V5}{PRS5, for bin1}
 #'   \item{V6}{PRS6, for bin1}
 #'   \item{V7}{PRS7, for bin1}
-#'   \item{target}{Target Phenotype, value}
+#'   \item{phenotype}{Target Phenotype, value}
 #'   
 #'   
 #' }

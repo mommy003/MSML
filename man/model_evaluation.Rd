@@ -21,17 +21,21 @@ model_evaluation(dat, mv, tn, prev, pthreshold = 0.05, method = "R2ROC")
 }
 \value{
 This function will generate all possible model outcomes for validation and test dataset
-\item{}{}
 }
 \description{
 This function will identify the best model in the validation and test dataset.
 }
 \examples{
-#dat <- predict_validation
-#mv=8
-#tn=15
-#prev=0.047
-#model_evaluation(dat,mv,tn,prev)
+\dontrun{
+dat <- predict_validation
+mv=8
+tn=15
+prev=0.047
+model_evaluation(dat,mv,tn,prev)
+#This process will generate three distinct output files in the working directory
+#named evaluation1.out, evaluation2.out and evaluation3.out.
+#For details (see https://github.com/mommy003/MSML).
+}
 }
 \keyword{Identify}
 \keyword{best}
