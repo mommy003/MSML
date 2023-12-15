@@ -15,7 +15,7 @@ install.packages("r2redux")
 library(r2redux)
 ```
  or
- - Installation from CRAN
+ - Installation from GitHub
 ```
 install.packages("devtools")
 library(devtools)
