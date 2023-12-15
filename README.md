@@ -9,13 +9,13 @@ The MSML package is designed to determine the optimal model(s) by leveraging all
 
 # INSTALLATION
 To use MSML:
-##### Install the package from CRAN
+##### To install the package from CRAN
 ```
 install.packages("r2redux") 
 library(r2redux)
 ```
  or
- ##### Install the package from GitHub
+ ##### To install the package from GitHub
 ```
 install.packages("devtools")
 library(devtools)
