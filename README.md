@@ -10,6 +10,11 @@ The MSML package is designed to determine the optimal model(s) by leveraging all
 # INSTALLATION
 To use MSML:
 ```
+install.packages("r2redux") 
+library(r2redux)
+```
+ or
+```
 install.packages("devtools")
 library(devtools)
 devtools::install_github("mommy003/MSML")
