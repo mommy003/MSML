@@ -81,69 +81,69 @@ mv=8
 tn=15 # top 15 best models will be considered for the next step (evaluation), but it is recommended to use 127.
 prev=0.047 #population prevalence of the disease
 
-model_evaluation(dat,mv,tn,prev)
+out=model_evaluation(dat,mv,tn,prev)
 ```
 $\color{black}{Note:}$  tn can be any number between 1 and the total number of model configurations. It is recommended to set tn equal to the total number of model configurations to search the entire space. When reducing tn, it can speed up the process but may miss some areas of the search space. This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
 
 $\color{black}{Note:}$ pthreshold=0.05 and method="R2ROC" are defaults for optional arguments. When the user wants to change the significance level or method when comparing models, additional arguments can be added, e.g. model_evaluation(dat,mv,tn,prev,pthreshold=0.5,method="r2redux"), where pthreshold=0.5 results in a more conservative selection of best models (i.e., fewer models to be selected), and r2redux is based on the R2 metric rather than AUC.  It's important to note that using method="r2redux" will not utilize population prevalence information.
 
--	evaluation1.out is the output file which contains AUC, R2, and P-values for all models.
+-	out$out_all is the output file which contains AUC, R2, and P-values for all models.
 ```
-model#    AUC    p-value      R^2          p-value
-1 0.5324357 0.2229025 0.000592623 0.223694 
-2 0.545646 0.08576013 0.001174532 0.0866723 
-3 0.5222886 0.4027182 0.0002797196 0.4032217 
-4 0.5279203 0.2943169 0.0004390236 0.294991 
-5 0.5595865 0.02454698 0.002003651 0.02521387 
-6 0.5937453 0.0003581904 0.004978719 0.0004145577 
-7 0.5720028 0.006440316 0.002929198 0.006794875 
-8 0.5510913 0.05424664 0.001472042 0.05509745 
-9 0.5331448 0.2129157 0.000618838 0.213723 
-10 0.5406711 0.1260559 0.0009321708 0.1269686
+row# model#  AUC   p-value      R^2          p-value
+[1,] "1 0.5324357 0.2229025 0.000592623 0.223694 "
+[2,] "2 0.545646 0.08576013 0.001174532 0.0866723 "
+[3,] "3 0.5222886 0.4027182 0.0002797196 0.4032217 "
+[4,] "4 0.5279203 0.2943169 0.0004390236 0.294991 "
+[5,] "5 0.5595865 0.02454698 0.002003651 0.02521387 "
+[6,] "6 0.5937453 0.0003581904 0.004978719 0.0004145577 "
+[7,] "7 0.5720028 0.006440316 0.002929198 0.006794875 "
+[8,] "8 0.5510913 0.05424664 0.001472042 0.05509745 "
+[9,] "9 0.5331448 0.2129157 0.000618838 0.213723 "
+[10,] "10 0.5406711 0.1260559 0.0009321708 0.1269686 "
+
 .....
 .....
 ```
--	evaluation2.out is the output file which contains AUC, R2 and P-values for the top ‘tn’ models according to the AUC or R^2 (see definition of ‘tn’ above).
+-	out$out_start is the output file which contains AUC, R2 and P-values for the top ‘tn’ models according to the AUC or R^2 (see definition of ‘tn’ above).
 ```
-top 15  best models **********************
-model#   AUC    p-value    R^2          p-value
-51 0.6127805 1.536486e-05 0.00722743 2.078418e-05 
-71 0.6134653 1.356228e-05 0.007316329 1.848149e-05 
-83 0.6118782 1.80883e-05 0.007111139 2.423688e-05 
-90 0.6123521 1.660565e-05 0.007172091 2.236086e-05 
-93 0.6166943 7.445744e-06 0.007743088 1.052536e-05 
-105 0.6133035 1.396901e-05 0.007295281 1.900241e-05 
-108 0.6180561 5.749691e-06 0.007926819 8.262617e-06 
-113 0.6128037 1.530023e-05 0.007230433 2.070188e-05 
-117 0.6144772 1.126111e-05 0.007448734 1.551767e-05 
-118 0.6174846 6.41108e-06 0.007849448 9.149019e-06 
-123 0.6156061 9.132044e-06 0.007597883 1.274599e-05 
-124 0.6187217 5.06109e-06 0.008017432 7.333389e-06 
-125 0.6103531 2.375613e-05 0.006916789 3.134108e-05 
-126 0.6152355 9.784879e-06 0.00754875 1.359931e-05 
-127 0.61625 8.095044e-06 0.007683629 1.138343e-05
+row# model#  AUC   p-value      R^2          p-value
+[1,] "51 0.6127805 1.536486e-05 0.00722743 2.078418e-05 "
+[2,] "71 0.6134653 1.356228e-05 0.007316329 1.848149e-05 "
+[3,] "83 0.6118782 1.80883e-05 0.007111139 2.423688e-05 "
+[4,] "90 0.6123521 1.660565e-05 0.007172091 2.236086e-05 "
+[5,] "93 0.6166943 7.445744e-06 0.007743088 1.052536e-05 "
+[6,] "105 0.6133035 1.396901e-05 0.007295281 1.900241e-05 "
+[7,] "108 0.6180561 5.749691e-06 0.007926819 8.262617e-06 "
+[8,] "113 0.6128037 1.530023e-05 0.007230433 2.070188e-05 "
+[9,] "117 0.6144772 1.126111e-05 0.007448734 1.551767e-05 "
+[10,] "118 0.6174846 6.41108e-06 0.007849448 9.149019e-06 "
+[11,] "123 0.6156061 9.132044e-06 0.007597883 1.274599e-05 "
+[12,] "124 0.6187217 5.06109e-06 0.008017432 7.333389e-06 "
+[13,] "125 0.6103531 2.375613e-05 0.006916789 3.134108e-05 "
+[14,] "126 0.6152355 9.784879e-06 0.00754875 1.359931e-05 "
+[15,] "127 0.61625 8.095044e-06 0.007683629 1.138343e-05 "
+
 ```
--	evaluation3.out is the output file which contains R2 and P-values for the best models, which are not significantly different from the top-performing model.
+-	out$out_selected is the output file which contains R2 and P-values for the best models, which are not significantly different from the top-performing model.
 
 $\color{black}{Note:}$  If a user aims to identify the best model, they can make a selection based on the highest AUC estimates, such as choosing model 124, or opt for Parsimony models, for instance, selecting model 51.
 ```
-selected models **********************
-model#    AUC    p-value   R^2          p-value         Configurations
-51 0.6127805 1.536486e-05 0.00722743 2.078418e-05    2 5 6 
-71 0.6134653 1.356228e-05 0.007316329 1.848149e-05    1 2 5 6 
-83 0.6118782 1.80883e-05 0.007111139 2.423688e-05    1 5 6 7 
-90 0.6123521 1.660565e-05 0.007172091 2.236086e-05    2 4 5 6 
-93 0.6166943 7.445744e-06 0.007743088 1.052536e-05    2 5 6 7 
-105 0.6133035 1.396901e-05 0.007295281 1.900241e-05    1 2 4 5 6 
-108 0.6180561 5.749691e-06 0.007926819 8.262617e-06    1 2 5 6 7 
-113 0.6128037 1.530023e-05 0.007230433 2.070188e-05    1 4 5 6 7 
-117 0.6144772 1.126111e-05 0.007448734 1.551767e-05    2 3 5 6 7 
-118 0.6174846 6.41108e-06 0.007849448 9.149019e-06    2 4 5 6 7 
-123 0.6156061 9.132044e-06 0.007597883 1.274599e-05    1 2 3 5 6 7 
-124 0.6187217 5.06109e-06 0.008017432 7.333389e-06    1 2 4 5 6 7 
-125 0.6103531 2.375613e-05 0.006916789 3.134108e-05    1 3 4 5 6 7 
-126 0.6152355 9.784879e-06 0.00754875 1.359931e-05    2 3 4 5 6 7 
-127 0.61625 8.095044e-06 0.007683629 1.138343e-05    1 2 3 4 5 6 7 
+row# model#  AUC   p-value      R^2          p-value
+[1,] "51 0.6127805 1.536486e-05 0.00722743 2.078418e-05    2 5 6 "
+[2,] "71 0.6134653 1.356228e-05 0.007316329 1.848149e-05    1 2 5 6 "
+[3,] "83 0.6118782 1.80883e-05 0.007111139 2.423688e-05    1 5 6 7 "
+[4,] "90 0.6123521 1.660565e-05 0.007172091 2.236086e-05    2 4 5 6 "
+[5,] "93 0.6166943 7.445744e-06 0.007743088 1.052536e-05    2 5 6 7 "
+[6,] "105 0.6133035 1.396901e-05 0.007295281 1.900241e-05    1 2 4 5 6 "
+[7,] "108 0.6180561 5.749691e-06 0.007926819 8.262617e-06    1 2 5 6 7 "
+[8,] "113 0.6128037 1.530023e-05 0.007230433 2.070188e-05    1 4 5 6 7 "
+[9,] "117 0.6144772 1.126111e-05 0.007448734 1.551767e-05    2 3 5 6 7 "
+[10,] "118 0.6174846 6.41108e-06 0.007849448 9.149019e-06    2 4 5 6 7 "
+[11,] "123 0.6156061 9.132044e-06 0.007597883 1.274599e-05    1 2 3 5 6 7 "
+[12,] "124 0.6187217 5.06109e-06 0.008017432 7.333389e-06    1 2 4 5 6 7 "
+[13,] "125 0.6103531 2.375613e-05 0.006916789 3.134108e-05    1 3 4 5 6 7 "
+[14,] "126 0.6152355 9.784879e-06 0.00754875 1.359931e-05    2 3 4 5 6 7 "
+[15,] "127 0.61625 8.095044e-06 0.007683629 1.138343e-05    1 2 3 4 5 6 7 "
 ```
 For backup, make a copy of the result files, e.g.
 ```
