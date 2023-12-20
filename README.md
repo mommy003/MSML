@@ -145,12 +145,6 @@ row# model#  AUC   p-value      R^2          p-value
 [14,] "126 0.6152355 9.784879e-06 0.00754875 1.359931e-05    2 3 4 5 6 7 "
 [15,] "127 0.61625 8.095044e-06 0.007683629 1.138343e-05    1 2 3 4 5 6 7 "
 ```
-For backup, make a copy of the result files, e.g.
-```
-cp evaluation1.out evaluation1.out_v
-cp evaluation2.out evaluation2.out_v
-cp evaluation3.out evaluation3.out_v
-```
 
 ### Validation of this procedure using an independent test dataset
 Repeat the same procedure with an independent test dataset (e.g. data_test in this example)
@@ -163,9 +157,9 @@ out=model_configuration(data_train,data_valid,mv)
 dat <- out$predict_validation
 prev=0.047 
 tn=15
-model_evaluation(dat,mv,tn,prev,pthreshold=0.05)
+out2=model_evaluation(dat,mv,tn,prev,pthreshold=0.05)
 ```
-Then, the output files with the independent test dataset can be compared with the previous results (evaluation1.out_v, evaluation2.out_v, and evaluation3.out_v).  
+Then, the output files with the independent test dataset can be compared with the previous results.  
 
 # References
 1. Olkin, I. and  Finn, J.D. Correlations redux. Psychological Bulletin, 1995. 118(1): p. 155.
