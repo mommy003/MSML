@@ -26,7 +26,7 @@ with n denoting the total number of features and k indicating
 the number of features to include in each model.
 }
 \examples{
-\dontrun{
+\donttest{
 data_train <- data_train
 data_valid  <- data_valid
 mv=8

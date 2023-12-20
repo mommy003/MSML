@@ -18,19 +18,28 @@
 #' mv=8
 #' tn=15
 #' prev=0.047
-#' model_evaluation(dat,mv,tn,prev)
-#' #This process will generate three distinct output files in the working directory
-#' #named evaluation1.out, evaluation2.out and evaluation3.out.
+#' out=model_evaluation(dat,mv,tn,prev)
+#' #This process will generate three output files.
+#' #out$out_all, contains AUC, R2, and P-values for all models.
+#' #out$out_start, contains AUC, R2, and P-values for top tn models.
+#' #out$out_selected, contains AUC, R2, and P-values for best models.
 #' #For details (see https://github.com/mommy003/MSML).
 #' }
 
 model_evaluation = function (dat,mv,tn,prev,pthreshold=0.05,method="R2ROC") {
 
+os_name <- Sys.info()["sysname"]
+   if (startsWith(os_name, "Win")) {
+     slash <- paste0("\\")
+   } else {
+     slash <- paste0("/")
+   }
+
 dat=as.matrix(dat)
 k=ncol(dat)-1
 
-sink("evaluation1.out")
-cat("model#    AUC    p-value      R^2          p-value\n")
+sink(paste0(tempdir(), slash, "evaluation1.out"))
+#cat("model#    AUC    p-value      R^2          p-value\n")
 best=matrix(0,k,4)
 for (i in 1:k) {
   out=summary(lm(dat[,1]~dat[,(1+i)]))
@@ -50,9 +59,9 @@ sv1=seq(1,length(best[,1]))
 optm=sv1[best[,1] >= sout[tn]]
 yi=length(optm)
 
-sink("evaluation2.out")
-cat("top",tn," best models **********************\n")
-cat("model#   AUC    p-value    R^2          p-value\n")
+sink(paste0(tempdir(), slash, "evaluation2.out"))
+#cat("top",tn," best models **********************\n")
+#cat("model#   AUC    p-value    R^2          p-value\n")
 for (i in 1:yi) {
   cat(optm[i],best[optm[i],],"\n")
 }
@@ -96,9 +105,9 @@ while (yi != 0) {
 }
 
 
-sink("evaluation3.out")
-cat("selected models **********************\n")
-cat("model#    AUC    p-value   R^2          p-value         Configurations\n")
+sink(paste0(tempdir(), slash, "evaluation3.out"))
+#cat("selected models **********************\n")
+#cat("model#    AUC    p-value   R^2          p-value         Configurations\n")
 k=0
 for (i in 1:(mv-1)) {
   com=combn(seq(1,(mv-1)),i)
@@ -111,5 +120,16 @@ for (i in 1:(mv-1)) {
   }
 }
 sink()
+
+
+df1 = as.matrix(read.table(paste0(tempdir(), slash, "evaluation1.out"), header = F, sep=","))
+df2 = as.matrix(read.table(paste0(tempdir(), slash, "evaluation2.out"), header = F, sep=","))
+df3 = as.matrix(read.table(paste0(tempdir(), slash, "evaluation3.out"), header = F, sep=","))
+                 
+z = list(
+"out_all" = df1,
+"out_start" = df2,
+"out_selected" = df3
+)
 
 }

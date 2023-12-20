@@ -31,9 +31,11 @@ dat <- predict_validation
 mv=8
 tn=15
 prev=0.047
-model_evaluation(dat,mv,tn,prev)
-#This process will generate three distinct output files in the working directory
-#named evaluation1.out, evaluation2.out and evaluation3.out.
+out=model_evaluation(dat,mv,tn,prev)
+#This process will generate three output files.
+#out$out_all, contains AUC, R2, and P-values for all models.
+#out$out_start, contains AUC, R2, and P-values for top tn models.
+#out$out_selected, contains AUC, R2, and P-values for best models.
 #For details (see https://github.com/mommy003/MSML).
 }
 }

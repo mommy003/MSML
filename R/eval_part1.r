@@ -15,7 +15,7 @@
 #' @importFrom stats D lm pf
 #' @import utils
 #' @return This function will generate all possible model outcomes for validation and test dataset
-#' @examples \dontrun{
+#' @examples \donttest{
 #' data_train <- data_train
 #' data_valid  <- data_valid
 #' mv=8
