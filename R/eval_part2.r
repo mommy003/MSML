@@ -13,7 +13,7 @@
 #' @import r2redux
 #' @import R2ROC
 #' @return This function will generate all possible model outcomes for validation and test dataset
-#' @examples \dontrun{
+#' @examples \donttest{
 #' dat <- predict_validation
 #' mv=8
 #' tn=15

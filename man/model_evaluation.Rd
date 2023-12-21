@@ -26,7 +26,7 @@ This function will generate all possible model outcomes for validation and test 
 This function will identify the best model in the validation and test dataset.
 }
 \examples{
-\dontrun{
+\donttest{
 dat <- predict_validation
 mv=8
 tn=15
