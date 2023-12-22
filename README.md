@@ -16,6 +16,12 @@ library(devtools)
 devtools::install_github("mommy003/MSML")
 library(MSML) 
 ```
+##### To install the package from CRAN
+```
+install.packages("MSML")
+library(MSML)
+```
+
 # DATA PREPARATION
 Users need to supply two sets of data—specifically, training and validation datasets—with an equal number of columns (but varying numbers of rows depending on sample sizes in those datasets). Examples for clarification are provided below:
 ### Training Dataset
