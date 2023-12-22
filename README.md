@@ -16,6 +16,7 @@ library(devtools)
 devtools::install_github("mommy003/MSML")
 library(MSML) 
 ```
+OR
 ##### To install the package from CRAN
 ```
 install.packages("MSML")
