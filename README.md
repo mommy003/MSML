@@ -76,6 +76,10 @@ which will give the following output:
 [1] 2 4 0 0 0 0 0
 ```
 
+## Model configurations2
+This function is similar to the model_configuration function, with the added capability to maintain constant variables across models during training and prediction (see cov_train and cov_valid on Manual). Additionally, users have the option to select between linear or logistic regression models.
+
+
 ## Identifying Best Model
 Please note that users are required to load the R2ROC or r2redux  library to identify the best models. R2ROC or r2redux can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC and https://github.com/mommy003/r2redux). To identify best model
 ```
