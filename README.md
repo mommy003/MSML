@@ -76,8 +76,7 @@ which will give the following output:
 [1] 2 4 0 0 0 0 0
 ```
 
-If users intend to utilize constant covariates, we suggest utilizing the "model_configuration2" function. 
-To get all the possible model configurations
+#### If users intend to utilize constant covariates, we suggest utilizing the "model_configuration2" function. 
 To get all the possible model configurations  
 ```
 data_train <- data_train
