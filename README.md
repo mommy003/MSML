@@ -76,6 +76,18 @@ which will give the following output:
 [1] 2 4 0 0 0 0 0
 ```
 
+If users intend to utilize constant covariates, we suggest utilizing the "model_configuration2" function. 
+To get all the possible model configurations
+To get all the possible model configurations  
+```
+data_train <- data_train
+data_valid  <- data_valid
+mv=8
+cov_train <- cov_train
+cov_valid  <- cov_valid
+out=model_configuration2(data_train,data_valid,mv,cov_train, cov_valid, model = "lm")
+```
+
 ## Identifying Best Model
 Please note that users are required to load the R2ROC or r2redux  library to identify the best models. R2ROC or r2redux can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC and https://github.com/mommy003/r2redux). To identify best model
 ```
