@@ -86,6 +86,7 @@ cov_train <- cov_train
 cov_valid  <- cov_valid
 out=model_configuration2(data_train,data_valid,mv,cov_train, cov_valid, model = "lm")
 ```
+$\color{black}{Note:}$ If a user intends to employ logistic regression without constant covariates, we advise preparing a covariate file where all values are set to 1.
 
 ## Identifying Best Model
 Please note that users are required to load the R2ROC or r2redux  library to identify the best models. R2ROC or r2redux can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC and https://github.com/mommy003/r2redux). To identify best model
