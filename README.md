@@ -45,7 +45,9 @@ data_train <- data_train #(user should store their own training dataset here)
 data_valid  <- data_valid #(user should store their own validation dataset here)
 mv=8 #(number of columns in training/validation/test dataset)
 out=model_configuration(data_train,data_valid,mv)
+out=model_configuration(data_train,data_valid,mv,model="lm")
 ```
+$\color{black}{Note:}$ The syntax model="lm" (default) or "glm" can optionally use a linear model or a logistic regression, respectively. 
 
 This process will produce predicted values for the validation datasets, corresponding to each model configuration trained on the training dataset. The outcome of this function will yield variables named ‘predict_validation’ and ‘total_model_configurations’. 
 #### out$predict_validation  
@@ -86,7 +88,7 @@ cov_train <- cov_train
 cov_valid  <- cov_valid
 out=model_configuration2(data_train,data_valid,mv,cov_train, cov_valid, model = "lm")
 ```
-$\color{black}{Note:}$ If a user intends to employ logistic regression without constant covariates, we advise preparing a covariate file where all values are set to 1.
+$\color{black}{Note:}$ Similar to the model_configuration function above, this process will generate predicted values for the validation datasets, corresponding to each model configuration trained on the training dataset. The output of this function will result in variables named 'predict_validation' and 'total_model_configurations'.
 
 ## Identifying Best Model
 Please note that users are required to load the R2ROC or r2redux  library to identify the best models. R2ROC or r2redux can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC and https://github.com/mommy003/r2redux). To identify best model
