@@ -44,7 +44,6 @@ To get all the possible model configurations
 data_train <- data_train #(user should store their own training dataset here)
 data_valid  <- data_valid #(user should store their own validation dataset here)
 mv=8 #(number of columns in training/validation/test dataset)
-out=model_configuration(data_train,data_valid,mv)
 out=model_configuration(data_train,data_valid,mv,model="lm")
 ```
 $\color{black}{Note:}$ The syntax model="lm" (default) or "glm" can optionally use a linear model or a logistic regression, respectively. 
