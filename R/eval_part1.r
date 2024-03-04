@@ -1,15 +1,17 @@
 #' model_configuration function
 #'
-#' This function will generate features (e.g. PRSs) based on all possible combinations of model. 
-#' The total number of models required to explore the combinations of these 'n' 
-#' features can be calculated by summing the combinations for each possible 
-#' number of features, ranging from 1 to 'n' (C(n,i)).
-#' where C(n,k)  represents the binomial coefficient or "n choose k," 
-#' with n denoting the total number of features and k indicating 
-#' the number of features to include in each model.
-#' @param data_train This is the matrix for the training dataset
-#' @param data_valid This is the matrix for the validation dataset
+#' This function generates predicted values for the validation dataset by applying 
+#' optimal weights to features, which were estimated in the training dataset for each 
+#' model configuration. The total number of model configurations is determined by 
+#' summing the combinations for each possible number of features, 
+#' ranging from 1 to 'n' (C(n, k)), where 'n choose k' (C(n, k)) represents the binomial 
+#' coefficient. Here, 'n' denotes the total number of features, and 'k' indicates 
+#' the number of features included in each model. For example, with n=7, 
+#' the total number of model configurations is 127.
+#' @param data_train This includes the dataframe of the training dataset in a matrix format
+#' @param data_valid This includes the dataframe of the validation dataset in a matrix format
 #' @param mv The total number of columns in data_train/data_valid
+#' @param model This is the type of model (e.g. lm (default) or glm)
 #' @keywords All possible model combinations
 #' @export
 #' @importFrom stats D lm pf
@@ -19,7 +21,7 @@
 #' data_train <- data_train
 #' data_valid  <- data_valid
 #' mv=8
-#' out=model_configuration(data_train,data_valid,mv)
+#' out=model_configuration(data_train,data_valid,mv,model = "lm")
 #' #This process will produce predicted values for the validation datasets,
 #' #corresponding to each model configuration trained on the training dataset.
 #' #The outcome of this function will yield variables named 'predict_validation'
@@ -29,7 +31,7 @@
 #' }
 
 
-model_configuration = function (data_train,data_valid, mv) {
+model_configuration = function (data_train,data_valid, mv, model = "lm") {
 
 cat("\n")
 #cat("prediction models **************************\n")
@@ -40,7 +42,16 @@ for (i in 1:(mv-1)) {
   for (j in 1:ncol(com)) {
     k=k+1
     #cat("model",k,":",com[,j],"\n")
-    mod=lm(as.numeric(data_train$phenotype) ~ as.matrix(data_train[,com[,j]]))
+    #mod=lm(as.numeric(data_train$phenotype) ~ as.matrix(data_train[,com[,j]]))
+
+    if (model == "lm") {
+        mod=lm(as.numeric(data_train$phenotype) ~ as.matrix(data_train[,com[,j]]))
+      } else if (model == "glm") {
+        mod <- glm(as.numeric(data_train$phenotype) ~ as.matrix(data_train[,com[,j]]), family = binomial(link="logit"))
+      } else {
+        stop("Invalid model type. Use 'lm' or 'glm'.")
+      }
+
     pred=as.matrix(cbind(1,data_valid[,com[,j]]))%*%as.matrix(mod$coefficients)
     df1=cbind(df1,pred)
   }

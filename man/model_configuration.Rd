@@ -4,33 +4,36 @@
 \alias{model_configuration}
 \title{model_configuration function}
 \usage{
-model_configuration(data_train, data_valid, mv)
+model_configuration(data_train, data_valid, mv, model = "lm")
 }
 \arguments{
-\item{data_train}{This is the matrix for the training dataset}
+\item{data_train}{This includes the dataframe of the training dataset in a matrix format}
 
-\item{data_valid}{This is the matrix for the validation dataset}
+\item{data_valid}{This includes the dataframe of the validation dataset in a matrix format}
 
 \item{mv}{The total number of columns in data_train/data_valid}
+
+\item{model}{This is the type of model (e.g. lm (default) or glm)}
 }
 \value{
 This function will generate all possible model outcomes for validation and test dataset
 }
 \description{
-This function will generate features (e.g. PRSs) based on all possible combinations of model.
-The total number of models required to explore the combinations of these 'n'
-features can be calculated by summing the combinations for each possible
-number of features, ranging from 1 to 'n' (C(n,i)).
-where C(n,k)  represents the binomial coefficient or "n choose k,"
-with n denoting the total number of features and k indicating
-the number of features to include in each model.
+This function generates predicted values for the validation dataset by applying
+optimal weights to features, which were estimated in the training dataset for each
+model configuration. The total number of model configurations is determined by
+summing the combinations for each possible number of features,
+ranging from 1 to 'n' (C(n, k)), where 'n choose k' (C(n, k)) represents the binomial
+coefficient. Here, 'n' denotes the total number of features, and 'k' indicates
+the number of features included in each model. For example, with n=7,
+the total number of model configurations is 127.
 }
 \examples{
 \donttest{
 data_train <- data_train
 data_valid  <- data_valid
 mv=8
-out=model_configuration(data_train,data_valid,mv)
+out=model_configuration(data_train,data_valid,mv,model = "lm")
 #This process will produce predicted values for the validation datasets,
 #corresponding to each model configuration trained on the training dataset.
 #The outcome of this function will yield variables named 'predict_validation'

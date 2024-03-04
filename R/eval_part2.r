@@ -1,12 +1,12 @@
 #' model_evaluation function
 #'
 #' This function will identify the best model in the validation and test dataset. 
-#' @param dat This is the matrix for all the combinations of the model
+#' @param dat This is the dataframe for all the combinations of the model in a matrix format
 #' @param mv The total number of columns in data_train/data_valid
-#' @param tn The total no of best models to be identified
+#' @param tn The total number of best models to be identified
 #' @param prev The prevalence of disease in the data
-#' @param pthreshold The P value threshold for the significance level
-#' @param method The methods to be used to evaluate models
+#' @param pthreshold The significance p value threshold when comparing models (default 0.05)
+#' @param method The methods to be used to evaluate models (e.g. R2ROC (default) or r2redux)
 #' @keywords Identify best models
 #' @export
 #' @importFrom stats D lm pf 
@@ -20,9 +20,12 @@
 #' prev=0.047
 #' out=model_evaluation(dat,mv,tn,prev)
 #' #This process will generate three output files.
-#' #out$out_all, contains AUC, R2, and P-values for all models.
-#' #out$out_start, contains AUC, R2, and P-values for top tn models.
-#' #out$out_selected, contains AUC, R2, and P-values for best models.
+#' #out$out_all, contains AUC, p values for AUC, R2, and p values for R2, 
+#' #respectively for all models.
+#' #out$out_start, contains AUC, p values for AUC, R2, and p values for R2,
+#' #respectively for top tn models.
+#' #out$out_selected, contains AUC, p values for AUC, R2, and p values for R2,
+#' #respectively for best models.  This also includes selected features for models
 #' #For details (see https://github.com/mommy003/MSML).
 #' }
 
