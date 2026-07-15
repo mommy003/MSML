@@ -10,7 +10,7 @@ The MSML package is designed to determine the optimal model(s) by leveraging all
 # INSTALLATION
 To use MSML:
 ##### To install the package from GitHub
-```
+```r
 install.packages("devtools")
 library(devtools)
 devtools::install_github("mommy003/MSML")
@@ -18,7 +18,7 @@ library(MSML)
 ```
 OR
 ##### To install the package from CRAN
-```
+```r
 install.packages("MSML")
 library(MSML)
 ```
@@ -40,7 +40,7 @@ Where V1 to Vn represent the features (e.g. PRSs) incorporated in the datasets. 
 # DATA ANALYSIS
 ## Model configurations 
 To get all the possible model configurations  
-```
+```r
 data_train <- data_train #(user should store their own training dataset here)
 data_valid  <- data_valid #(user should store their own validation dataset here)
 mv=8 #(number of columns in training/validation/test dataset)
@@ -56,7 +56,7 @@ This process will produce predicted values for the validation datasets, correspo
 
 
 #### out$total_model_configurations
-```
+```r
 X1 X2 X3 X4 X5 X6 X7 X8 X9 X10 X11 X12 X13 X14 X15 X16 X17 X18 X19 ……
 1  2  3  4  5  6  7  1  1   1   1   1   1   2   2   2   2   2   ……
 0  0  0  0  0  0  0  2  3   4   5   6   7   3   4   5   6   7   ……
@@ -68,18 +68,18 @@ X1 X2 X3 X4 X5 X6 X7 X8 X9 X10 X11 X12 X13 X14 X15 X16 X17 X18 X19 ……
 ```
 which shows which model fits which features. For instance, in the 15th model, the 2nd and 4th features are fitted in the training and validation datasets. To extract features fitted in a specific model (e.g., 15th model):  
 
-```
+```r
 out$total_model_configurations$X15
 ```
 
 which will give the following output:
-```
+```r
 [1] 2 4 0 0 0 0 0
 ```
 
 #### If users intend to utilize constant covariates, we suggest utilizing the "model_configuration2" function. 
 To get all the possible model configurations  
-```
+```r
 data_train <- data_train
 data_valid  <- data_valid
 mv=8
@@ -91,7 +91,7 @@ $\color{black}{Note:}$ Similar to the model_configuration function above, this p
 
 ## Identifying Best Model
 Please note that users are required to load the R2ROC or r2redux  library to identify the best models. R2ROC or r2redux can be installed from CRAN or GitHub (https://github.com/mommy003/R2ROC and https://github.com/mommy003/r2redux). To identify best model
-```
+```r
 install.packages("R2ROC")
 install.packages("r2redux")
 library(R2ROC)
@@ -102,13 +102,13 @@ tn=15 # top 15 best models will be considered for the next step (evaluation), bu
 prev=0.047 #population prevalence of the disease
 
 out=model_evaluation(dat,mv,tn,prev)
-```
+```r
 $\color{black}{Note:}$  tn can be any number between 1 and the total number of model configurations. It is recommended to set tn equal to the total number of model configurations to search the entire space. When reducing tn, it can speed up the process but may miss some areas of the search space. This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
 
 $\color{black}{Note:}$ pthreshold=0.05 and method="R2ROC" are defaults for optional arguments. When the user wants to change the significance level or method when comparing models, additional arguments can be added, e.g. model_evaluation(dat,mv,tn,prev,pthreshold=0.5,method="r2redux"), where pthreshold=0.5 results in a more conservative selection of best models (i.e., fewer models to be selected), and r2redux is based on the R2 metric rather than AUC.  It's important to note that using method="r2redux" will not utilize population prevalence information.
 
 -	out$out_all is the output file which contains AUC, R2, and P-values for all models.
-```
+```r
 row# model#  AUC   p-value      R^2          p-value
 [1,] "1 0.5324357 0.2229025 0.000592623 0.223694 "
 [2,] "2 0.545646 0.08576013 0.001174532 0.0866723 "
@@ -123,7 +123,7 @@ row# model#  AUC   p-value      R^2          p-value
 
 .....
 .....
-```
+```r
 -	out$out_start is the output file which contains AUC, R2 and P-values for the top ‘tn’ models according to the AUC or R^2 (see definition of ‘tn’ above).
 ```
 row# model#  AUC   p-value      R^2          p-value
