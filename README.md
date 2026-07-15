@@ -147,7 +147,7 @@ row# model#  AUC   p-value      R^2          p-value
 -	out$out_selected is the output file which contains R2 and P-values for the best models, which are not significantly different from the top-performing model.
 
 $\color{black}{Note:}$  If a user aims to identify the best model, they can make a selection based on the highest AUC estimates, such as choosing model 124, or opt for Parsimony models, for instance, selecting model 51.
-```
+```r
 row# model#  AUC   p-value      R^2          p-value
 [1,] "51 0.6127805 1.536486e-05 0.00722743 2.078418e-05    2 5 6 "
 [2,] "71 0.6134653 1.356228e-05 0.007316329 1.848149e-05    1 2 5 6 "
