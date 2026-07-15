@@ -102,7 +102,7 @@ tn=15 # top 15 best models will be considered for the next step (evaluation), bu
 prev=0.047 #population prevalence of the disease
 
 out=model_evaluation(dat,mv,tn,prev)
-```r
+```
 $\color{black}{Note:}$  tn can be any number between 1 and the total number of model configurations. It is recommended to set tn equal to the total number of model configurations to search the entire space. When reducing tn, it can speed up the process but may miss some areas of the search space. This process will generate three distinct output files in the working directory named evaluation1.out, evaluation2.out and evaluation3.out.
 
 $\color{black}{Note:}$ pthreshold=0.05 and method="R2ROC" are defaults for optional arguments. When the user wants to change the significance level or method when comparing models, additional arguments can be added, e.g. model_evaluation(dat,mv,tn,prev,pthreshold=0.5,method="r2redux"), where pthreshold=0.5 results in a more conservative selection of best models (i.e., fewer models to be selected), and r2redux is based on the R2 metric rather than AUC.  It's important to note that using method="r2redux" will not utilize population prevalence information.
@@ -123,9 +123,9 @@ row# model#  AUC   p-value      R^2          p-value
 
 .....
 .....
-```r
--	out$out_start is the output file which contains AUC, R2 and P-values for the top ‘tn’ models according to the AUC or R^2 (see definition of ‘tn’ above).
 ```
+-	out$out_start is the output file which contains AUC, R2 and P-values for the top ‘tn’ models according to the AUC or R^2 (see definition of ‘tn’ above).
+```r
 row# model#  AUC   p-value      R^2          p-value
 [1,] "51 0.6127805 1.536486e-05 0.00722743 2.078418e-05 "
 [2,] "71 0.6134653 1.356228e-05 0.007316329 1.848149e-05 "
@@ -168,7 +168,7 @@ row# model#  AUC   p-value      R^2          p-value
 
 ### Validation of this procedure using an independent test dataset
 Repeat the same procedure with an independent test dataset (e.g. data_test in this example)
-```
+```r
 data_train <- data_train #(user should store the same training dataset here)
 data_valid  <- data_test #(user should store the independent test dataset here)
 mv=8 #(number of columns in training/validation/test dataset)
